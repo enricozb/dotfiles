@@ -1,0 +1,195 @@
+# ----- preamble -----
+# mod key is Alt
+  set $mod Mod1
+
+# home row direction keys
+  set $left h
+  set $down j
+  set $up k
+  set $right l
+
+# ----- sway enter/exit -----
+# reload config
+  bindsym $mod+Shift+r restart
+
+# lock screen
+  # bindsym Mod4+l exec swaylock -C ~/.config/swaylock/config
+  bindsym Mod4+l exec --no-startup-id "~/.config/i3/lock.sh"
+
+# exit
+  bindsym $mod+Shift+e exit
+  # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# ----- the rest -----
+# include ~/.config/sway/config.d/*
+
+# ----- focus -----
+# prevent focus changing when mouse moves
+# focus_follows_mouse no
+
+# move your focus around
+  bindsym $mod+$left focus left
+  bindsym $mod+$down focus down
+  bindsym $mod+$up focus up
+  bindsym $mod+$right focus right
+
+# ----- moving containers -----
+# move containers with mouse and $mod
+  floating_modifier $mod
+
+# move the focused window with the same, but add shift
+  bindsym $mod+Shift+$left move left
+  bindsym $mod+Shift+$down move down
+  bindsym $mod+Shift+$up move up
+  bindsym $mod+Shift+$right move right
+
+# kill container
+  bindsym $mod+q kill
+
+# ----- resizing -----
+mode "resize" {
+  # left will shrink the containers width
+  # right will grow the containers width
+  # up will shrink the containers height
+  # down will grow the containers height
+  bindsym $left resize shrink width 10px
+  bindsym $down resize grow height 10px
+  bindsym $up resize shrink height 10px
+  bindsym $right resize grow width 10px
+
+  # Return to default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# ----- layout -----
+  # You can "split" the current object of your focus with
+  # $mod+b or $mod+v, for horizontal and vertical splits
+  # respectively.
+  bindsym $mod+b splith
+  bindsym $mod+v splitv
+
+  # Make the current focus fullscreen
+  bindsym $mod+f fullscreen
+  bindsym $mod+g floating toggle
+
+  # Swap focus between the tiling area and the floating area
+  bindsym $mod+Tab focus mode_toggle
+
+
+# ----- media keys -----
+bindsym XF86AudioMute exec --no-startup-id "pamixer --toggle-mute toggle && killall -SIGUSR1 status_bar.py"
+bindsym F8 exec --no-startup-id "pamixer --toggle-mute toggle && killall -SIGUSR1 status_bar.py"
+
+bindsym XF86AudioLowerVolume exec --no-startup-id "pamixer --decrease 5 && killall -SIGUSR1 status_bar.py"
+bindsym F9 exec --no-startup-id "pamixer --decrease 5 && killall -SIGUSR1 status_bar.py"
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pamixer --increase 5 && killall -SIGUSR1 status_bar.py"
+bindsym F10 exec --no-startup-id "pamixer --increase 5 && killall -SIGUSR1 status_bar.py"
+
+bindsym XF86AudioPrev exec --no-startup-id "playerctl previous && killall -SIGUSR1 status_bar.py"
+bindsym XF86AudioNext exec --no-startup-id "playerctl next && killall -SIGUSR1 status_bar.py"
+bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause && killall -SIGUSR1 status_bar.py"
+bindsym F7 exec --no-startup-id "playerctl play-pause && killall -SIGUSR1 status_bar.py"
+
+
+# ----- programs -----
+# terminal
+  bindsym $mod+Return exec --no-startup-id "alacritty -e /usr/bin/fish"
+
+# launcher
+# Note: pass the final command to swaymsg so that the resulting window
+# can be opened on the original workspace that the command was run on.
+  bindsym $mod+d exec --no-startup-id "rofi -show run -normal-window -display-run '> '"
+
+  # this is so rofi in i3 leaves the previously focused window still
+  # selected after rofi exits
+  for_window [class="Rofi"] floating enable
+
+# screenshot
+  bindsym End exec --no-startup-id "flameshot gui"
+  bindsym Print exec --no-startup-id "flameshot gui"
+  bindsym F3 exec --no-startup-id "flameshot gui"
+
+# ----- style -----
+# background
+  exec --no-startup-id "feh --bg-scale '/home/enricozb/.config/wallpapers/Carmine De Fazio.jpg'"
+  # output * bg "/home/enricozb/.wallpapers/e5.1/Carmine De Fazio.jpg" fill
+
+# compositor
+  exec --no-startup-id "picom -b --config /home/enricozb/.config/picom/config"
+
+# gaps
+  gaps outer 0
+  gaps inner 10
+
+# no titles and decent border
+  default_border none
+  default_border pixel 2
+# ----- status bar -----
+bar {
+  # When the status_command prints a new line to stdout, swaybar updates.
+  # The default just shows the current date and time.
+  status_command ~/.config/sway/scripts/status_bar.py
+
+  i3bar_command i3bar -t
+  position top
+  font pango:{{BAR_FONT}}
+
+  strip_workspace_numbers true
+
+  height {{BAR_HEIGHT}}
+
+  colors {
+    statusline #ffffff
+    background #252525bb
+    separator #ff0000
+    focused_workspace #ffffff00 #ffffff00 #ffffff
+    inactive_workspace #252525bb #252525bb #ffffff
+  }
+}
+
+
+# ----- workspaces -----
+# relative witch to workspaces
+  bindsym $mod+bracketleft workspace prev
+  bindsym $mod+bracketright workspace next
+
+# switch to workspace
+  bindsym $mod+1 workspace 1
+  bindsym $mod+2 workspace 2
+  bindsym $mod+3 workspace 3
+  bindsym $mod+4 workspace 4
+  bindsym $mod+5 workspace 5
+  bindsym $mod+6 workspace 6
+  bindsym $mod+7 workspace 7
+  bindsym $mod+8 workspace 8
+  bindsym $mod+9 workspace 9
+  bindsym $mod+0 workspace 10
+  bindsym $mod+minus workspace 11:todo
+  bindsym $mod+equal workspace 12:music
+
+# move focused container to workspace
+  bindsym $mod+Shift+1 move container to workspace 1
+  bindsym $mod+Shift+2 move container to workspace 2
+  bindsym $mod+Shift+3 move container to workspace 3
+  bindsym $mod+Shift+4 move container to workspace 4
+  bindsym $mod+Shift+5 move container to workspace 5
+  bindsym $mod+Shift+6 move container to workspace 6
+  bindsym $mod+Shift+7 move container to workspace 7
+  bindsym $mod+Shift+8 move container to workspace 8
+  bindsym $mod+Shift+9 move container to workspace 9
+  bindsym $mod+Shift+0 move container to workspace 10
+  bindsym $mod+Shift+minus move container to workspace 11:todo
+  bindsym $mod+Shift+equal move container to workspace 12:music
+
+
+# ----- scratchpad -----
+  # Move the currently focused window to the scratchpad
+  bindsym $mod+Shift+m move scratchpad
+
+  # Show the next scratchpad window or hide the focused scratchpad window.
+  # If there are multiple scratchpad windows, this command cycles through them.
+  bindsym $mod+m scratchpad show

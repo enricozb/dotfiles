@@ -1,6 +1,10 @@
 {
   "repo": null,
-  "dest": {},
+  "dest": {
+    "i3/config.template": "/home/enricozb/.config/i3/config.template"
+  },
   "overrides": {},
-  "templates": {}
+  "templates": {
+    "i3/config.template": "/home/enricozb/.config/i3/config"
+  }
 }
