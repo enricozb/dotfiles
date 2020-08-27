@@ -1,0 +1,32 @@
+{
+  "repo": "git@github.com:enricozb/dotfiles.git",
+  "dest": {
+    "i3/config.template": "/home/enricozb/.config/i3/config.template",
+    "kak/rc": "/home/enricozb/.config/kak/rc",
+    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
+    "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
+    "alacritty": "/home/enricozb/.config/alacritty",
+    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
+    "picom/config": "/home/enricozb/.config/picom/config",
+    "kak/kakrc": "/home/enricozb/.config/kak/kakrc",
+    "sway": "/home/enricozb/.config/sway",
+    "wallpapers": "/home/enricozb/.config/wallpapers",
+    "mpv": "/home/enricozb/.config/mpv",
+    "tmux/.tmux.conf": "/home/enricozb/.tmux.conf"
+  },
+  "overrides": {
+    "enricozb@xibalba": {
+      "dest": {},
+      "templates": {},
+      "vars": {
+        "BAR_HEIGHT": "22",
+        "ROFI_FONT": "Terminus Medium 12",
+        "BAR_FONT": "Terminus"
+      }
+    }
+  },
+  "templates": {
+    "i3/config.template": "/home/enricozb/.config/i3/config",
+    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi"
+  }
+}
