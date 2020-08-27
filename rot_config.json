@@ -1,6 +1,7 @@
 {
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
+    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
     "i3/config.template": "/home/enricozb/.config/i3/config.template",
     "alacritty": "/home/enricozb/.config/alacritty"
   },
@@ -9,8 +10,8 @@
       "dest": {},
       "templates": {},
       "vars": {
-        "BAR_HEIGHT": "22",
-        "BAR_FONT": "TERMINUS"
+        "BAR_FONT": "TERMINUS",
+        "BAR_HEIGHT": "22"
       }
     }
   },
