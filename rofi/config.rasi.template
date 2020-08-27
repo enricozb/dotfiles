@@ -1,0 +1,21 @@
+* {
+  color: #ffffff;
+  backlight: #000000;
+  background-color: transparent;
+  font: "{{ROFI_FONT}}";
+}
+
+#window {
+  height: 100%;
+  width: 100%;
+  x-offset: 0px;
+  y-offset: BAR_HEIGHT px;
+  padding: 400px 600px;
+  background-color: #252525bb;
+}
+
+#prompt {
+  color: #ffffff;
+  foreground-color: #ff0000;
+  // background-color: #00ff00;
+}
