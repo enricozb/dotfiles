@@ -1,7 +1,7 @@
 {
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
-    "kak": "/home/enricozb/.config/kak/rc",
+    "kak/rc": "/home/enricozb/.config/kak/rc",
     "wallpapers": "/home/enricozb/.config/wallpapers",
     "picom/config": "/home/enricozb/.config/picom/config",
     "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
