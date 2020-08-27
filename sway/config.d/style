@@ -1,0 +1,11 @@
+# ----- style -----
+# background
+  output * bg "/home/enricozb/.wallpapers/e5.1/Carmine De Fazio.jpg" fill
+
+# gaps
+  gaps outer 0
+  gaps inner 10
+
+# no titles and decent border
+  default_border none
+  default_border pixel 5

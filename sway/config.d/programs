@@ -1,0 +1,12 @@
+# ----- programs -----
+# terminal
+  bindsym $mod+Return exec 'alacritty -e fish'
+
+# launcher
+# Note: pass the final command to swaymsg so that the resulting window
+# can be opened on the original workspace that the command was run on.
+  bindsym $mod+d exec 'MOZ_ENABLE_WAYLAND=1 rofi -show run -display-run "> "'
+
+# screenshot
+  bindsym End exec 'grim -g "$(slurp)" - | wl-copy'
+

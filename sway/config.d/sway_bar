@@ -1,0 +1,18 @@
+# ----- status bar -----
+bar {
+  position top
+  font pango:Terminus Medium
+
+  height 22
+
+  # When the status_command prints a new line to stdout, swaybar updates.
+  # The default just shows the current date and time.
+  status_command ~/.config/sway/scripts/status_bar.py
+
+  colors {
+    statusline #ffffff
+    background #252525bb
+    focused_workspace #ffffff00 #ffffff00 #ffffff
+    inactive_workspace #252525bb #252525bb #ffffff
+  }
+}

@@ -1,0 +1,22 @@
+# ----- preamble -----
+# mod key is Alt
+  set $mod Mod1
+
+# home row direction keys
+  set $left h
+  set $down j
+  set $up k
+  set $right l
+
+# ----- sway enter/exit -----
+# reload config
+  bindsym $mod+Shift+r reload
+
+# lock screen
+  bindsym Mod4+l exec swaylock -C ~/.config/swaylock/config
+
+# exit
+  bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# ----- the rest -----
+include ~/.config/sway/config.d/*
