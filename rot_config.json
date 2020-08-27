@@ -1,5 +1,5 @@
 {
-  "repo": null,
+  "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
     "i3/config.template": "/home/enricozb/.config/i3/config.template"
   },
