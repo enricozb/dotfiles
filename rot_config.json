@@ -1,14 +1,15 @@
 {
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
-    "alacritty": "/home/enricozb/.config/alacritty",
+    "mpv": "/home/enricozb/.config/mpv",
     "wallpapers": "/home/enricozb/.config/wallpapers",
     "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
-    "mpv": "/home/enricozb/.config/mpv",
-    "i3/config.template": "/home/enricozb/.config/i3/config.template",
     "picom/config": "/home/enricozb/.config/picom/config",
+    "sway": "/home/enricozb/.config/sway",
+    "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
+    "alacritty": "/home/enricozb/.config/alacritty",
     "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
-    "sway": "/home/enricozb/.config/sway"
+    "i3/config.template": "/home/enricozb/.config/i3/config.template"
   },
   "overrides": {
     "7899a9c68b98407e8be0c809161e07e6": {
