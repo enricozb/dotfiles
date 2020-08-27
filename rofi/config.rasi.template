@@ -9,7 +9,7 @@
   height: 100%;
   width: 100%;
   x-offset: 0px;
-  y-offset: BAR_HEIGHT px;
+  y-offset: {{BAR_HEIGHT}} px;
   padding: 400px 600px;
   background-color: #252525bb;
 }
