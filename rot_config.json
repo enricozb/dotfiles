@@ -1,17 +1,18 @@
 {
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
-    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
+    "alacritty": "/home/enricozb/.config/alacritty",
     "i3/config.template": "/home/enricozb/.config/i3/config.template",
-    "alacritty": "/home/enricozb/.config/alacritty"
+    "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
+    "fish/config.fish": "/home/enricozb/.config/fish/config.fish"
   },
   "overrides": {
     "7899a9c68b98407e8be0c809161e07e6": {
       "dest": {},
       "templates": {},
       "vars": {
-        "BAR_FONT": "TERMINUS",
-        "BAR_HEIGHT": "22"
+        "BAR_HEIGHT": "22",
+        "BAR_FONT": "TERMINUS"
       }
     }
   },
