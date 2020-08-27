@@ -1,0 +1,28 @@
+# -------------------------------------- plugins ---------------------------------------
+
+# download plugin manager if it doesn't exist
+evaluate-commands %sh{
+  if [[ ! -d $kak_config/plugins/plug.kak ]]; then
+    git clone \
+      https://github.com/andreyorst/plug.kak.git \
+      "$kak_config/plugins/plug.kak"
+  fi
+}
+
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+
+# plug "jjk96/kakoune-rainbow"
+
+plug "caksoylar/kakoune-smooth-scroll"
+plug "enricozb/cursors.kak"
+plug "enricozb/lean.kak"
+plug "enricozb/wiki.kak"
+plug "andreyorst/fzf.kak"
+plug "andreyorst/plug.kak" noload
+
+# ------------------------------------- .kak files ------------------------------------- 
+evaluate-commands %sh{
+  for file in "$kak_config/rc/"*".kak"; do
+    echo "source '$file'"
+  done
+}
