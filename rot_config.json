@@ -1,30 +1,31 @@
 {
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
+    "kak": "/home/enricozb/.config/kak/rc",
+    "wallpapers": "/home/enricozb/.config/wallpapers",
     "picom/config": "/home/enricozb/.config/picom/config",
+    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
     "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
     "i3/config.template": "/home/enricozb/.config/i3/config.template",
     "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
-    "alacritty": "/home/enricozb/.config/alacritty",
     "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
     "sway": "/home/enricozb/.config/sway",
-    "mpv": "/home/enricozb/.config/mpv",
-    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
-    "wallpapers": "/home/enricozb/.config/wallpapers"
+    "alacritty": "/home/enricozb/.config/alacritty",
+    "mpv": "/home/enricozb/.config/mpv"
   },
   "overrides": {
     "7899a9c68b98407e8be0c809161e07e6": {
       "dest": {},
       "templates": {},
       "vars": {
-        "BAR_FONT": "Terminus",
         "ROFI_FONT": "Terminus Medium 12",
-        "BAR_HEIGHT": "22"
+        "BAR_HEIGHT": "22",
+        "BAR_FONT": "Terminus"
       }
     }
   },
   "templates": {
-    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi",
-    "i3/config.template": "/home/enricozb/.config/i3/config"
+    "i3/config.template": "/home/enricozb/.config/i3/config",
+    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi"
   }
 }
