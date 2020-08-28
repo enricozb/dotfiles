@@ -2,7 +2,6 @@
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
     "i3/config.template": "/home/enricozb/.config/i3/config.template",
-    "q/r/s/t": "/home/enricozb/a",
     "wallpapers": "/home/enricozb/.config/wallpapers",
     "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
     "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
