@@ -2,26 +2,27 @@
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
     "i3/config.template": "/home/enricozb/.config/i3/config.template",
-    "kak/rc": "/home/enricozb/.config/kak/rc",
-    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
+    "q/r/s/t": "/home/enricozb/a",
+    "wallpapers": "/home/enricozb/.config/wallpapers",
+    "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
     "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
     "alacritty": "/home/enricozb/.config/alacritty",
     "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
+    "kak/rc": "/home/enricozb/.config/kak/rc",
     "picom/config": "/home/enricozb/.config/picom/config",
     "kak/kakrc": "/home/enricozb/.config/kak/kakrc",
     "sway": "/home/enricozb/.config/sway",
-    "wallpapers": "/home/enricozb/.config/wallpapers",
     "mpv": "/home/enricozb/.config/mpv",
-    "tmux/.tmux.conf": "/home/enricozb/.tmux.conf"
+    "fish/config.fish": "/home/enricozb/.config/fish/config.fish"
   },
   "overrides": {
     "enricozb@xibalba": {
       "dest": {},
       "templates": {},
       "vars": {
-        "BAR_HEIGHT": "22",
+        "BAR_FONT": "Terminus",
         "ROFI_FONT": "Terminus Medium 12",
-        "BAR_FONT": "Terminus"
+        "BAR_HEIGHT": "22"
       }
     }
   },
