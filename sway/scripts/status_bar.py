@@ -24,14 +24,18 @@ def volume():
 
 def playerctl():
     try:
-        playerctl_status = cmd(["playerctl", "status"])
+        playerctl_status = cmd(["playerctl", "-a", "status"])
     except CalledProcessError:
         playerctl_status = "Stopped"
 
-    if playerctl_status == "Playing":
+    if "Playing" in playerctl_status:
+        playerctl_status = "Playing"
         artist = cmd(["playerctl", "metadata", "artist"])
         title = cmd(["playerctl", "metadata", "title"])
         return f"[{artist}]: {title}"
+
+    if playerctl_status != "Stopped":
+        return "Paused"
 
     return playerctl_status
 
