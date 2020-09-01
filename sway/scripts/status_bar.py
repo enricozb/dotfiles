@@ -28,6 +28,9 @@ def playerctl():
     except CalledProcessError:
         playerctl_status = "Stopped"
 
+    if playerctl_status is None:
+        return None
+
     if "Playing" in playerctl_status:
         playerctl_status = "Playing"
         artist = cmd(["playerctl", "metadata", "artist"])
