@@ -5,7 +5,6 @@
     "wallpapers": "/home/enricozb/.config/wallpapers",
     "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
     "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
-    "alacritty": "/home/enricozb/.config/alacritty",
     "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
     "kak/rc": "/home/enricozb/.config/kak/rc",
     "picom/config": "/home/enricozb/.config/picom/config",
