@@ -5,11 +5,11 @@ window:
 
 font:
   normal:
-    family: Terminus
+    family: Terminus (TTF)
     style: Medium
 
   bold:
-    family: Terminus
+    family: Terminus (TTF)
     style: Bold
 
   size: 10.0
