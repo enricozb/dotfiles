@@ -136,7 +136,7 @@ bar {
 
   i3bar_command i3bar -t
   position top
-  font pango:{{BAR_FONT}}
+  font pango:{{FONT}}
 
   strip_workspace_numbers true
 

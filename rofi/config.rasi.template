@@ -2,7 +2,7 @@
   color: #ffffff;
   backlight: #000000;
   background-color: transparent;
-  font: "{{ROFI_FONT}}";
+  font: "{{FONT}}";
 }
 
 #window {

@@ -5,11 +5,11 @@ window:
 
 font:
   normal:
-    family: {{TERMINAL_FONT}}
+    family: {{FONT}}
     style: Medium
 
   bold:
-    family: {{TERMINAL_FONT}}
+    family: {{FONT}}
     style: Bold
 
   size: 10.0
