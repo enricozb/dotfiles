@@ -163,7 +163,7 @@ end
 
 
 function ezb -d "ssh into main ezb machine"
-  command ssh 192.168.2.101
+  command ssh 192.168.2.147
 end
 
 
