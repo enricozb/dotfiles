@@ -99,9 +99,9 @@ set-option global fzf_file_command \
 set-option global fzf_default_opts "%sh{echo ""$FZF_DEFAULT_OPTS""}"
 
 # smooth-scroll
-set-option global scroll_keys_normal \
-  <c-f> <c-b> <pageup> <pagedown> m M <a-semicolon> n <a-n> N <a-N>
+# set-option global scroll_keys_normal \
+#   <c-f> <c-b> <pageup> <pagedown> m M <a-semicolon> n <a-n> N <a-N>
 
-hook global WinCreate .* %{
-  hook -once window WinDisplay .* smooth-scroll-enable
-}
+# hook global WinCreate .* %{
+#   hook -once window WinDisplay .* smooth-scroll-enable
+# }

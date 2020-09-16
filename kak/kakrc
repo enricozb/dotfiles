@@ -12,8 +12,8 @@ evaluate-commands %sh{
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 # plug "jjk96/kakoune-rainbow"
+# plug "caksoylar/kakoune-smooth-scroll"
 
-plug "caksoylar/kakoune-smooth-scroll"
 plug "enricozb/cursors.kak"
 plug "enricozb/lean.kak"
 plug "enricozb/wiki.kak"
