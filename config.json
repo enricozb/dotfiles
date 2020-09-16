@@ -1,20 +1,21 @@
 {
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
-    "i3/config.template": "/home/enricozb/.config/i3/config.template",
-    "xinit/.xinitrc": "/home/enricozb/.xinitrc",
-    "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
     "sway": "/home/enricozb/.config/sway",
-    "kak/colors/palernight.kak": "/home/enricozb/.config/kak/colors/palernight.kak",
-    "mpv": "/home/enricozb/.config/mpv",
+    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
+    "i3/config.template": "/home/enricozb/.config/i3/config.template",
     "picom/config": "/home/enricozb/.config/picom/config",
     "kak/kakrc": "/home/enricozb/.config/kak/kakrc",
-    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
-    "wallpapers": "/home/enricozb/.config/wallpapers",
     "i3/kbd-light.sh": "/home/enricozb/.config/i3/kbd-light.sh",
-    "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
-    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
+    "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
+    "fish/functions/fish_prompt.fish": "/home/enricozb/.config/fish/functions/fish_prompt.fish",
+    "wallpapers": "/home/enricozb/.config/wallpapers",
+    "kak/colors/palernight.kak": "/home/enricozb/.config/kak/colors/palernight.kak",
     "kak/rc": "/home/enricozb/.config/kak/rc",
+    "mpv": "/home/enricozb/.config/mpv",
+    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
+    "xinit/.xinitrc": "/home/enricozb/.xinitrc",
+    "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
     "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml.template"
   },
   "overrides": {
@@ -31,15 +32,15 @@
       "dest": {},
       "templates": {},
       "vars": {
-        "FONT": "Terminus",
         "BAR_HEIGHT": "22",
+        "FONT": "Terminus",
         "ROFI_FONT_SIZE": "Medium 12"
       }
     }
   },
   "templates": {
+    "i3/config.template": "/home/enricozb/.config/i3/config",
     "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi",
-    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml",
-    "i3/config.template": "/home/enricozb/.config/i3/config"
+    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml"
   }
 }
