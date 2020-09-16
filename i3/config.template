@@ -113,6 +113,10 @@ bindsym F7 exec --no-startup-id "playerctl play-pause && killall -SIGUSR1 status
   bindsym Print exec --no-startup-id "flameshot gui"
   bindsym F3 exec --no-startup-id "flameshot gui"
 
+# brightness
+  bindsym $mod+F5 exec --no-startup-id "~/.config/i3/kbd-light.sh -"
+  bindsym $mod+F6 exec --no-startup-id "~/.config/i3/kbd-light.sh +"
+
 # ----- style -----
 # background
   exec --no-startup-id "feh --bg-scale '/home/enricozb/.config/wallpapers/Carmine De Fazio.jpg'"
