@@ -25,7 +25,7 @@
 
 # ----- focus -----
 # prevent focus changing when mouse moves
-# focus_follows_mouse no
+  focus_follows_mouse {{FOCUS_FOLLOWS_MOUSE}}
 
 # move your focus around
   bindsym $mod+$left focus left
