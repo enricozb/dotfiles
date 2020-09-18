@@ -25,7 +25,8 @@
       "vars": {
         "FONT": "Terminus (TTF)",
         "BAR_HEIGHT": "33",
-        "ROFI_FONT_SIZE": "20"
+        "ROFI_FONT_SIZE": "20",
+        "FOCUS_FOLLOWS_MOUSE": "false"
       }
     },
     "enricozb@xibalba": {
@@ -34,7 +35,8 @@
       "vars": {
         "BAR_HEIGHT": "22",
         "FONT": "Terminus",
-        "ROFI_FONT_SIZE": "Medium 12"
+        "ROFI_FONT_SIZE": "Medium 12",
+        "FOCUS_FOLLOWS_MOUSE": "true"
       }
     }
   },
