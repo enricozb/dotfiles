@@ -1,22 +1,23 @@
 {
   "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
-    "sway": "/home/enricozb/.config/sway",
-    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
     "i3/config.template": "/home/enricozb/.config/i3/config.template",
-    "picom/config": "/home/enricozb/.config/picom/config",
-    "kak/kakrc": "/home/enricozb/.config/kak/kakrc",
-    "i3/kbd-light.sh": "/home/enricozb/.config/i3/kbd-light.sh",
-    "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
+    "kak/colors/palernight.kak": "/home/enricozb/.config/kak/colors/palernight.kak",
     "fish/functions/fish_prompt.fish": "/home/enricozb/.config/fish/functions/fish_prompt.fish",
     "wallpapers": "/home/enricozb/.config/wallpapers",
-    "kak/colors/palernight.kak": "/home/enricozb/.config/kak/colors/palernight.kak",
-    "kak/rc": "/home/enricozb/.config/kak/rc",
     "mpv": "/home/enricozb/.config/mpv",
-    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
-    "xinit/.xinitrc": "/home/enricozb/.xinitrc",
+    "picom/config": "/home/enricozb/.config/picom/config",
+    "kak/kakrc": "/home/enricozb/.config/kak/kakrc",
+    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
     "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
-    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml.template"
+    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
+    "i3/kbd-light.sh": "/home/enricozb/.config/i3/kbd-light.sh",
+    "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
+    "sway": "/home/enricozb/.config/sway",
+    "xinit/.xinitrc": "/home/enricozb/.xinitrc",
+    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml.template",
+    "bash/.bash_profile": "/home/enricozb/.bash_profile",
+    "kak/rc": "/home/enricozb/.config/kak/rc"
   },
   "overrides": {
     "enricozb@crux": {
@@ -24,25 +25,25 @@
       "templates": {},
       "vars": {
         "FONT": "Terminus (TTF)",
+        "FOCUS_FOLLOWS_MOUSE": "false",
         "BAR_HEIGHT": "33",
-        "ROFI_FONT_SIZE": "20",
-        "FOCUS_FOLLOWS_MOUSE": "false"
+        "ROFI_FONT_SIZE": "20"
       }
     },
     "enricozb@xibalba": {
       "dest": {},
       "templates": {},
       "vars": {
-        "BAR_HEIGHT": "22",
-        "FONT": "Terminus",
         "ROFI_FONT_SIZE": "Medium 12",
-        "FOCUS_FOLLOWS_MOUSE": "true"
+        "FOCUS_FOLLOWS_MOUSE": "true",
+        "BAR_HEIGHT": "22",
+        "FONT": "Terminus"
       }
     }
   },
   "templates": {
-    "i3/config.template": "/home/enricozb/.config/i3/config",
     "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi",
-    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml"
+    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml",
+    "i3/config.template": "/home/enricozb/.config/i3/config"
   }
 }
