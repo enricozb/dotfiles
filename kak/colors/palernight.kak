@@ -13,7 +13,7 @@ evaluate-commands %sh{
     purple=rgb:c792ea
     cyan=rgb:89ddff
     white=rgb:bfc7d5
-    black=rgb:0a0e14
+    black=default
     comment_grey=rgb:697098
     gutter_fg_grey=rgb:4b5263
     cursor_grey=rgb:2c323c
