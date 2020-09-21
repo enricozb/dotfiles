@@ -49,6 +49,8 @@ map global normal <c-s> ': fzf-mode<ret>b' -docstring "fzf switch buffer"
 
 
 # -------------------------------------- commands --------------------------------------
+define-command d "buffer *debug*"
+define-command D "buffer *debug*"
 define-command lower "exec `"
 define-command upper "exec ~"
 define-command W "write"
