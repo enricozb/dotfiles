@@ -13,12 +13,12 @@ evaluate-commands %sh{
     purple=rgb:c792ea
     cyan=rgb:89ddff
     white=rgb:bfc7d5
-    black=default
+    black=rgb:0a0e14
     comment_grey=rgb:697098
     gutter_fg_grey=rgb:4b5263
     cursor_grey=rgb:2c323c
     visual_grey=rgb:3e4452
-    menu_grey=rgb:0a0e14
+    menu_grey=rgb:697098
     special_grey=rgb:3b4048
     vertsplit=rgb:181a1f
     visual_black=default
@@ -52,7 +52,7 @@ evaluate-commands %sh{
     face global list   $yellow
 
     # Builtin
-    face global Default            $white,$black
+    face global Default            $white,default
 
     face global PrimarySelection   $black,$white+bfg
     face global SecondarySelection $black,$white+fg
@@ -68,17 +68,17 @@ evaluate-commands %sh{
 
     # Bottom menu:
     # text + background
-    face global MenuBackground     black,$white
+    face global MenuBackground     $black,$white
     face global MenuForeground     $black,$purple
 
     # completion menu info
-    face global MenuInfo           $black,$white+i
+    face global MenuInfo           $menu_grey,default+i
 
     # assistant, [+]
     face global Information        $white,$visual_grey
 
     face global Error              $white,$red
-    face global StatusLine         $white,$black
+    face global StatusLine         $white,default
 
     # Status line
     face global StatusLineMode     $black,$purple      # insert, prompt, enter key ...
@@ -88,7 +88,7 @@ evaluate-commands %sh{
 
     face global Prompt             $purple,$black # :
     face global MatchingChar       $red+b         # (), {}
-    face global BufferPadding      $gutter_fg_grey,$black   # EOF tildas (~)
+    face global BufferPadding      $gutter_fg_grey,default   # EOF tildas (~)
 
     # Whitespace characters
     face global Whitespace         $gutter_fg_grey,$black+fg
