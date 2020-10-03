@@ -1,5 +1,4 @@
 {
-  "repo": "git@github.com:enricozb/dotfiles.git",
   "dest": {
     "i3/config.template": "/home/enricozb/.config/i3/config.template",
     "kak/colors/palernight.kak": "/home/enricozb/.config/kak/colors/palernight.kak",
