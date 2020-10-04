@@ -49,7 +49,7 @@
         "FOCUS_FOLLOWS_MOUSE": "true",
         "FONT": "Terminus (TTF)",
         "ROFI_FONT_SIZE": "20",
-        "TERMINAL_FONT_SIZE": "10.0"
+        "TERMINAL_FONT_SIZE": "12.0"
       }
     }
   },

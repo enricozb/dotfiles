@@ -12,7 +12,7 @@ font:
     family: {{FONT}}
     style: Bold
 
-  size: 10.0
+  size: {{TERMINAL_FONT_SIZE}}
 
 # Colors (Ayu Dark)
 colors:
