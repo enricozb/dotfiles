@@ -14,13 +14,14 @@ set -x FZF_DEFAULT_OPTS \
 set -U FZF_LEGACY_KEYBINDINGS 0
 
 # ------------------------- path -------------------------
-set -x PATH "$HOME/.cargo/bin" $PATH        # rust
-set -x PATH "$HOME/.elan/bin" $PATH         # lean
-set -x PATH "$HOME/.local/bin/" $PATH       # personal scripts
-set -x PATH "$HOME/.mathlib/bin" $PATH      # lean - mathlib
-set -x PATH "$HOME/.node_modules/bin" $PATH # node
-set -x PATH "$HOME/.poetry/bin" $PATH       # poetry python
-set -x PATH "/opt/bin/" $PATH               # manual installs
+set -x PATH $PATH "$HOME/.cargo/bin"        # rust
+set -x PATH $PATH "$HOME/.elan/bin"         # lean
+set -x PATH $PATH "$HOME/.local/bin/"       # personal scripts
+set -x PATH $PATH "$HOME/.mathlib/bin"      # lean - mathlib
+set -x PATH $PATH "$HOME/.node_modules/bin" # node
+set -x PATH $PATH "$HOME/.poetry/bin"       # poetry python
+set -x PATH $PATH "/usr/bin/vendor_perl/"   # exiftool
+set -x PATH $PATH "/opt/bin/"               # manual installs
 
 # ------------------------ aliases -----------------------
 alias o "open"
