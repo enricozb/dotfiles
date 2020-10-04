@@ -48,11 +48,12 @@ def date():
 
 
 def battery():
-    status = cmd(["cat", "/sys/class/power_supply/BAT0/status"])
-    now = cmd(["cat", "/sys/class/power_supply/BAT0/charge_now"])
-    full = cmd(["cat", "/sys/class/power_supply/BAT0/charge_full"])
-    if None in (now, full):
-        return
+    for prefix in ["charge", "energy"]:
+        status = cmd(["cat", "/sys/class/power_supply/BAT0/status"])
+        now = cmd(["cat", f"/sys/class/power_supply/BAT0/energy_now"])
+        full = cmd(["cat", f"/sys/class/power_supply/BAT0/energy_full"])
+        if None in (now, full):
+            return
 
     if status == "Charging":
         return f"{100 * int(now) / int(full):0.1f}% [chrg]"

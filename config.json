@@ -1,42 +1,55 @@
 {
   "dest": {
-    "i3/config.template": "/home/enricozb/.config/i3/config.template",
     "kak/colors/palernight.kak": "/home/enricozb/.config/kak/colors/palernight.kak",
-    "fish/functions/fish_prompt.fish": "/home/enricozb/.config/fish/functions/fish_prompt.fish",
-    "wallpapers": "/home/enricozb/.config/wallpapers",
-    "mpv": "/home/enricozb/.config/mpv",
     "picom/config": "/home/enricozb/.config/picom/config",
+    "fish/functions/fish_prompt.fish": "/home/enricozb/.config/fish/functions/fish_prompt.fish",
+    "xinit/.xinitrc": "/home/enricozb/.xinitrc",
+    "i3/config.template": "/home/enricozb/.config/i3/config.template",
+    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
+    "kak/rc": "/home/enricozb/.config/kak/rc",
+    "i3/kbd-light.sh": "/home/enricozb/.config/i3/kbd-light.sh",
+    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml.template",
+    "sway": "/home/enricozb/.config/sway",
+    "bash/.bash_profile": "/home/enricozb/.bash_profile",
+    "wallpapers": "/home/enricozb/.config/wallpapers",
     "kak/kakrc": "/home/enricozb/.config/kak/kakrc",
     "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
-    "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini",
-    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
-    "i3/kbd-light.sh": "/home/enricozb/.config/i3/kbd-light.sh",
     "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
-    "sway": "/home/enricozb/.config/sway",
-    "xinit/.xinitrc": "/home/enricozb/.xinitrc",
-    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml.template",
-    "bash/.bash_profile": "/home/enricozb/.bash_profile",
-    "kak/rc": "/home/enricozb/.config/kak/rc"
+    "mpv": "/home/enricozb/.config/mpv",
+    "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini"
   },
   "overrides": {
     "enricozb@crux": {
       "dest": {},
       "templates": {},
       "vars": {
-        "FONT": "Terminus (TTF)",
-        "FOCUS_FOLLOWS_MOUSE": "false",
         "BAR_HEIGHT": "33",
-        "ROFI_FONT_SIZE": "20"
+        "FOCUS_FOLLOWS_MOUSE": "false",
+        "FONT": "Terminus (TTF)",
+        "ROFI_FONT_SIZE": "20",
+        "TERMINAL_FONT_SIZE": "10.0"
       }
     },
     "enricozb@xibalba": {
       "dest": {},
       "templates": {},
       "vars": {
-        "ROFI_FONT_SIZE": "Medium 12",
-        "FOCUS_FOLLOWS_MOUSE": "true",
         "BAR_HEIGHT": "22",
-        "FONT": "Terminus"
+        "FOCUS_FOLLOWS_MOUSE": "true",
+        "FONT": "Terminus",
+        "ROFI_FONT_SIZE": "Medium 12",
+        "TERMINAL_FONT_SIZE": "10.0"
+      }
+    },
+    "enricozb@carbon": {
+      "dest": {},
+      "templates": {},
+      "vars": {
+        "BAR_HEIGHT": "33",
+        "FOCUS_FOLLOWS_MOUSE": "true",
+        "FONT": "Terminus (TTF)",
+        "ROFI_FONT_SIZE": "20",
+        "TERMINAL_FONT_SIZE": "10.0"
       }
     }
   },
