@@ -61,6 +61,10 @@ hook global WinSetOption filetype=c %{
   set-option window formatcmd "clang-format -"
 }
 
+hook global WinSetOption filetype=go %{
+  set-option window formatcmd "gofmt"
+}
+
 hook global WinSetOption filetype=python %{
   set-option window tabstop 4
   set-option window indentwidth 4
