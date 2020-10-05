@@ -16,7 +16,7 @@
     "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
     "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
     "mpv": "/home/enricozb/.config/mpv",
-    "flameshot/flameshot.ini": "/home/enricozb/.config/Dharkael/flameshot.ini"
+    "flameshot/flameshot.ini": "/home/enricozb/.config/flameshot/flameshot.ini"
   },
   "overrides": {
     "enricozb@crux": {
