@@ -70,7 +70,7 @@ hook global WinSetOption filetype=python %{
 
 hook global WinSetOption filetype=typescript %{
   set-option window formatcmd \
-    "npx prettier --stdin-filepath=${kak_buffile} --parser typescript"
+    "prettier --stdin-filepath=${kak_buffile} --parser typescript"
 }
 
 hook global WinSetOption filetype=man %{
