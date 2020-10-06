@@ -19,4 +19,4 @@ i3lock \
   --wrongcolor=00000000 \
   --insidewrongcolor=${red}99 \
   --ringwrongcolor=${red}99 \
-  --image "/home/enricozb/.wallpapers/e5.1/Carmine De Fazio-2560x1440.png"
+  --image "/home/enricozb/.config/wallpapers/Carmine De Fazio-2560x1440.png"
