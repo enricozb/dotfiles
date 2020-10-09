@@ -16,12 +16,13 @@ set -U FZF_LEGACY_KEYBINDINGS 0
 # ------------------------- path -------------------------
 set -x PATH $PATH "$HOME/.cargo/bin"        # rust
 set -x PATH $PATH "$HOME/.elan/bin"         # lean
+set -x PATH $PATH "$HOME/go/bin"            # golang
 set -x PATH $PATH "$HOME/.local/bin/"       # personal scripts
 set -x PATH $PATH "$HOME/.mathlib/bin"      # lean - mathlib
 set -x PATH $PATH "$HOME/.node_modules/bin" # node
 set -x PATH $PATH "$HOME/.poetry/bin"       # poetry python
-set -x PATH $PATH "/usr/bin/vendor_perl/"   # exiftool
 set -x PATH $PATH "/opt/bin/"               # manual installs
+set -x PATH $PATH "/usr/bin/vendor_perl/"   # exiftool
 
 # ------------------------ aliases -----------------------
 alias o "open"
