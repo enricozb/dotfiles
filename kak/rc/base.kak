@@ -56,13 +56,14 @@ define-command upper "exec ~"
 define-command W "write"
 
 
-# ------------------------------------ file-specific -----------------------------------
+# --------------------------------------- hooks ---------------------------------------
 hook global WinSetOption filetype=c %{
   set-option window formatcmd "clang-format -"
 }
 
 hook global WinSetOption filetype=go %{
   set-option window formatcmd "gofmt"
+  lsp-enable-window
 }
 
 hook global WinSetOption filetype=python %{
@@ -75,6 +76,10 @@ hook global WinSetOption filetype=python %{
 hook global WinSetOption filetype=typescript %{
   set-option window formatcmd \
     "prettier --stdin-filepath=${kak_buffile} --parser typescript"
+}
+
+hook global WinSetOption filetype=rust %{
+  set-option window formatcmd "rustfmt"
 }
 
 hook global WinSetOption filetype=man %{
@@ -90,12 +95,27 @@ hook global BufCreate .*i3/config.template %{
   set buffer filetype i3
 }
 
-hook global WinSetOption filetype=rust %{
-  set-option window formatcmd "rustfmt"
+# enable flag-lines hl for git diff
+hook global WinCreate .* %{
+    add-highlighter window/git-diff flag-lines Default git_diff_flags
+}
+# trigger update diff if inside git dir
+hook global BufOpenFile .* %{
+  evaluate-commands -draft %sh{
+    cd $(dirname "$kak_buffile")
+    if [ $(git rev-parse --git-dir 2>/dev/null) ]; then
+      for hook in WinCreate BufReload BufWritePost; do
+        printf "hook buffer -group git-update-diff %s .* 'git update-diff'\n" "$hook"
+      done
+    fi
+  }
 }
 
 
 # ----------------------------------- plugin options -----------------------------------
+# lsp
+# evaluate-commands %sh{kak-lsp --kakoune -s $kak_session}
+
 # fzf
 require-module fzf
 set-option global fzf_use_main_selection false

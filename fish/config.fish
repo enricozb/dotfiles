@@ -193,7 +193,7 @@ bind \eC config
 # ------------------------ source ------------------------
 source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null or true
 
-# source direnv if we have it
-if which direnv 2>/dev/null > /dev/null
-  eval (direnv hook fish)
+if [ -f "$HOME/.config/fish/config.local.fish" ]
+  source "$HOME/.config/fish/config.local.fish"
 end
+

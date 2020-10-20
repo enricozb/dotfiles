@@ -17,6 +17,9 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "enricozb/cursors.kak"
 plug "enricozb/lean.kak"
 plug "enricozb/wiki.kak"
+plug "kak-lsp/kak-lsp" do %{
+  cargo install --locked --force --path .
+}
 plug "andreyorst/fzf.kak"
 plug "andreyorst/plug.kak" noload
 
