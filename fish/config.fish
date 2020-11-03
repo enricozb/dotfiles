@@ -176,6 +176,25 @@ function mpv -w mpv -d "mpv with mpris"
     --really-quiet $argv > /dev/null 2>&1 & disown
 end
 
+
+function __bound_nextd -w nextd -d "nextd with > binding"
+  if [ -n (commandline) ]
+    commandline -i ">"
+  else
+    nextd
+    commandline -f repaint
+  end
+end
+
+function __bound_prevd -w prevd -d "prevd with < binding"
+  if [ -n (commandline) ]
+    commandline -i "<"
+  else
+    prevd
+    commandline -f repaint
+  end
+end
+
 # ----------------------- bindings -----------------------
 bind \ep project_open
 bind \eP project_insert
@@ -188,6 +207,8 @@ bind \cw forward-word
 bind \cb backward-kill-word
 bind \cs __fish_prepend_sudo
 bind \eC config
+bind \> __bound_nextd
+bind \< __bound_prevd
 
 
 # ------------------------ source ------------------------
