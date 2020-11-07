@@ -77,6 +77,15 @@ hook global WinSetOption filetype=typescript %{
     "prettier --stdin-filepath=${kak_buffile} --parser typescript"
 }
 
+hook global WinSetOption filetype=latex %{
+  map global normal ` i`<esc>a'<esc>
+  map global normal "'" i`<esc>a'<esc>
+  map global normal '"' i``<esc>a''<esc>
+  map global normal $ i$<esc>a$<esc>
+
+  set-option window formatcmd %{latexindent --yaml="defaultIndent: '  '"}
+}
+
 hook global WinSetOption filetype=man %{
   remove-highlighter global/col-89
   map buffer normal q :q<ret>
