@@ -30,7 +30,7 @@ map global normal = ': format<ret>'
 map global normal <c-o> <c-o>vv
 map global normal <c-i> <c-i>vv
 map global normal <c-f> "15j"
-map global normal <c-b> "15k"
+map global normal <c-q> "15k"
 
 # surround
 map global normal <a-I> <a-a>
