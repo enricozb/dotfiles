@@ -47,6 +47,8 @@ map global normal <c-r> ': fzf-mode<ret>s' -docstring "fzf search"
 map global normal <a-o> ': fzf-mode<ret>f' -docstring "fzf open file"
 map global normal <c-s> ': fzf-mode<ret>b' -docstring "fzf switch buffer"
 
+# lsp
+map global normal <c-l> ': enter-user-mode lsp<ret>f' -docstring "enter lsp mode"
 
 # -------------------------------------- commands --------------------------------------
 define-command d "buffer *debug*"
@@ -63,6 +65,7 @@ hook global WinSetOption filetype=c %{
 
 hook global WinSetOption filetype=go %{
   set-option window formatcmd "gofmt"
+  lsp-enable-window
 }
 
 hook global WinSetOption filetype=python %{
