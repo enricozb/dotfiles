@@ -48,7 +48,7 @@ map global normal <a-o> ': fzf-mode<ret>f' -docstring "fzf open file"
 map global normal <c-s> ': fzf-mode<ret>b' -docstring "fzf switch buffer"
 
 # lsp
-map global normal <c-l> ': enter-user-mode lsp<ret>f' -docstring "enter lsp mode"
+map global normal <c-l> ': enter-user-mode lsp<ret>' -docstring "enter lsp mode"
 
 # -------------------------------------- commands --------------------------------------
 define-command d "buffer *debug*"
