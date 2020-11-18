@@ -58,6 +58,24 @@ define-command upper "exec ~"
 define-command W "write"
 
 
+# --------------------------------------- hooks ---------------------------------------
+# enable flag-lines hl for git diff
+hook global WinCreate .* %{
+    add-highlighter window/git-diff flag-lines Default git_diff_flags
+}
+
+# trigger update diff if inside git dir
+hook global BufOpenFile .* %{
+    evaluate-commands -draft %sh{
+        cd $(dirname "$kak_buffile")
+        if [ $(git rev-parse --git-dir 2>/dev/null) ]; then
+            for hook in WinCreate BufReload BufWritePost; do
+                printf "hook buffer -group git-update-diff %s .* 'git update-diff'\n" "$hook"
+            done
+        fi
+    }
+}
+
 # ------------------------------------ file-specific -----------------------------------
 hook global WinSetOption filetype=c %{
   set-option window formatcmd "clang-format -"
@@ -65,7 +83,15 @@ hook global WinSetOption filetype=c %{
 
 hook global WinSetOption filetype=go %{
   set-option window formatcmd "gofmt"
-  lsp-enable-window
+
+  hook -group golang-format-on-write window BufWritePre .* %{
+    format
+  }
+
+  hook -once -always WinSetOption filetype=.* %{
+    unset-option window formatcmd
+    remove-hooks window golang-format-on-write
+  }
 }
 
 hook global WinSetOption filetype=python %{
@@ -116,6 +142,10 @@ set-option global fzf_file_command \
   "find . \( -path '*/.svn*' -o -path '*/.git/*' \) -prune -o -type f -print"
 set-option global fzf_default_opts "%sh{echo ""$FZF_DEFAULT_OPTS""}"
 
+# lsp
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+  lsp-enable-window
+}
 # smooth-scroll
 # set-option global scroll_keys_normal \
 #   <c-f> <c-b> <pageup> <pagedown> m M <a-semicolon> n <a-n> N <a-N>
