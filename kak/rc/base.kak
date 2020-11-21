@@ -3,6 +3,7 @@ set-option global autoreload true
 set-option global scrolloff 3,0
 set-option global ui_options ncurses_enable_mouse=false
 set-option global ui_options ncurses_assistant=none
+set-option global ui_options ncurses_status_on_top=yes
 
 hook global InsertChar \t %{ exec -draft -itersel h@ }
 set-option global tabstop 2
@@ -22,7 +23,7 @@ colorscheme palernight
 map -docstring 'case insensitive exact search' global normal / /(?i)\Q
 map -docstring 'search' global normal ? /
 map global normal <backspace> ': q<ret>'
-map global normal  ': comment-line<ret>' # <c-/> or <c-_>, the unit separator
+map global normal <c-_> ': comment-line<ret>' # <c-/> or <c-_>, the unit separator
 map global normal D <a-x>d
 map global normal = ': format<ret>'
 
