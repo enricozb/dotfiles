@@ -3,8 +3,6 @@ if [[ $(hostname) == "carbon" ]]; then
   setxkbmap -option caps:escape
   xinput set-prop "SYNA8006:00 06CB:CD8B Touchpad" "libinput Natural Scrolling Enabled" 1
   xinput set-prop "SYNA8006:00 06CB:CD8B Touchpad" "libinput Click Method Enabled" 0 1
-
-  xinput set-prop "Microsoft Arc Mouse" "libinput Natural Scrolling Enabled" 1
 fi
 
 exec dbus-launch i3
