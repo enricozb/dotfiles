@@ -14,6 +14,7 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 # plug "jjk96/kakoune-rainbow"
 # plug "caksoylar/kakoune-smooth-scroll"
 
+plug "enricozb/buffers.kak"
 plug "enricozb/cursors.kak"
 plug "enricozb/lean.kak"
 plug "enricozb/wiki.kak"
@@ -31,7 +32,7 @@ plug 'delapouite/kakoune-buffers' %{
   map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
 }
 plug "andreyorst/fzf.kak"
-plug "andreyorst/plug.kak" noload
+plug "robertmeta/plug.kak" noload
 
 # ------------------------------------- .kak files ------------------------------------- 
 evaluate-commands %sh{
