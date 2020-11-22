@@ -13,6 +13,7 @@ set -x FZF_DEFAULT_OPTS \
    --bind=tab:down,shift-tab:up"        # fzf
 set -U FZF_LEGACY_KEYBINDINGS 0
 
+
 # ------------------------- path -------------------------
 set -x PATH $PATH "$HOME/.cargo/bin"        # rust
 set -x PATH $PATH "$HOME/.elan/bin"         # lean
@@ -24,6 +25,7 @@ set -x PATH $PATH "$HOME/.poetry/bin"       # poetry python
 set -x PATH $PATH "/opt/bin/"               # manual installs
 set -x PATH $PATH "/usr/bin/vendor_perl/"   # exiftool
 
+
 # ------------------------ aliases -----------------------
 alias o "open"
 alias l "ls"
@@ -32,6 +34,10 @@ alias wiki "kak ~/wiki/index.md"
 alias wg "wikigrep"
 alias gg "lazygit"
 alias tree "tree -C"
+
+# force __fzf_open to use my `open`
+alias xdg-open open
+
 
 # ----------------------- functions ----------------------
 function work --description "default tmux session"
@@ -158,7 +164,6 @@ function open
   end
 end
 
-
 function man -w man -d "man with kak as the pager"
   command kak -e "man $argv"
 end
@@ -194,6 +199,7 @@ function __bound_prevd -w prevd -d "prevd with < binding"
     commandline -f repaint
   end
 end
+
 
 # ----------------------- bindings -----------------------
 bind \ep project_open
