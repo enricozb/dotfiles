@@ -160,7 +160,7 @@ function open
     case 'image/*'
       sxiv $argv & disown
     case '*'
-      xdg-open $argv
+      command xdg-open $argv
   end
 end
 
