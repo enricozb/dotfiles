@@ -49,3 +49,8 @@ filetypes = ["typescript"]
 roots = ["package.json", "tsconfig.json"]
 command = "npx"
 args = ["typescript-language-server", "--stdio"]
+
+[language.rs]
+filetypes = ["rust"]
+roots = ["Cargo.toml"]
+command = "rust-analyzer"

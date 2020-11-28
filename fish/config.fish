@@ -12,11 +12,13 @@ set -x FZF_DEFAULT_OPTS \
    --tiebreak=length,end \
    --bind=tab:down,shift-tab:up"        # fzf
 set -U FZF_LEGACY_KEYBINDINGS 0
+set -x GOPATH "$HOME/.go"               # golang
 
 
 # ------------------------- path -------------------------
 set -x PATH $PATH "$HOME/.cargo/bin"        # rust
 set -x PATH $PATH "$HOME/.elan/bin"         # lean
+set -x PATH $PATH "$HOME/.go/bin/"          # golang
 set -x PATH $PATH "$HOME/go/bin"            # golang
 set -x PATH $PATH "$HOME/.local/bin/"       # personal scripts
 set -x PATH $PATH "$HOME/.mathlib/bin"      # lean - mathlib

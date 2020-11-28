@@ -144,7 +144,7 @@ set-option global fzf_file_command \
 set-option global fzf_default_opts "%sh{echo ""$FZF_DEFAULT_OPTS""}"
 
 # lsp
-hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+hook global WinSetOption filetype=(rust|go|javascript|typescript) %{
   lsp-enable-window
 }
 # smooth-scroll
