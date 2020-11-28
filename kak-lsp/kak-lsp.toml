@@ -53,4 +53,4 @@ args = ["typescript-language-server", "--stdio"]
 [language.rs]
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
-command = "rust-analyzer"
+command = "rls"
