@@ -54,3 +54,9 @@ args = ["typescript-language-server", "--stdio"]
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
 command = "rls"
+
+[language.python]
+filetypes = ["python"]
+roots = ["requirements.txt", "setup.py", ".git", ".hg"]
+command = "pyls"
+offset_encoding = "utf-8"

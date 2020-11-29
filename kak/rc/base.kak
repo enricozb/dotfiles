@@ -143,9 +143,11 @@ set-option global fzf_file_command \
 set-option global fzf_default_opts "%sh{echo ""$FZF_DEFAULT_OPTS""}"
 
 # lsp
-hook global WinSetOption filetype=(rust|go|javascript|typescript) %{
+set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
+hook global WinSetOption filetype=(rust|go|javascript|typescript|python) %{
   lsp-enable-window
 }
+
 # smooth-scroll
 # set-option global scroll_keys_normal \
 #   <c-f> <c-b> <pageup> <pagedown> m M <a-semicolon> n <a-n> N <a-N>
