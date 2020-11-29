@@ -118,7 +118,6 @@ hook global WinSetOption filetype=latex %{
 
 hook global WinSetOption filetype=man %{
   remove-highlighter global/col-89
-  map buffer normal q :q<ret>
 }
 
 hook global BufCreate .*(sway)/config.d/[^\.]* %{
