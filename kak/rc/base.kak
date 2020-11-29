@@ -130,6 +130,15 @@ hook global BufCreate .*i3/config.template %{
 
 hook global WinSetOption filetype=rust %{
   set-option window formatcmd "rustfmt"
+
+  hook -group rust-format-on-write window BufWritePre .* %{
+    format
+  }
+
+  hook -once -always WinSetOption filetype=.* %{
+    unset-option window formatcmd
+    remove-hooks window rust-format-on-write
+  }
 }
 
 
