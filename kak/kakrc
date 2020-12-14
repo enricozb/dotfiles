@@ -16,6 +16,7 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 plug "enricozb/tabs.kak" %{
   set-option global modelinefmt_tabs '%val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}}'
+  set-option global tab_separator '│'
   map global normal ^ q
   map global normal <a-^> Q
   map global normal q b
