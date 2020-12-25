@@ -89,7 +89,7 @@ hook global WinSetOption filetype=go %{
     format
   }
 
-  hook -once -always WinSetOption filetype=.* %{
+  hook window -once -always WinSetOption filetype=.* %{
     unset-option window formatcmd
     remove-hooks window golang-format-on-write
   }
@@ -135,7 +135,7 @@ hook global WinSetOption filetype=rust %{
     format
   }
 
-  hook -once -always WinSetOption filetype=.* %{
+  hook window -once -always WinSetOption filetype=.* %{
     unset-option window formatcmd
     remove-hooks window rust-format-on-write
   }
