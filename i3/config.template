@@ -104,6 +104,7 @@ bindsym F7 exec --no-startup-id "playerctl play-pause && killall -SIGUSR1 status
 # Note: pass the final command to swaymsg so that the resulting window
 # can be opened on the original workspace that the command was run on.
   bindsym $mod+d exec --no-startup-id "rofi -show run -display-run '> '"
+  bindsym $mod+t exec --no-startup-id ftab
 
   # this is so rofi in i3 leaves the previously focused window still
   # selected after rofi exits
