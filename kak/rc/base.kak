@@ -14,7 +14,6 @@ set-option global indentwidth 2
 add-highlighter global/numbers number-lines
 add-highlighter global/trailing-whitespace regex ([^\S\n]+)\n 1:red,bright-red
 add-highlighter global/todo-fixme regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+r
-add-highlighter global/col-89 column 89 default,rgb:252525
 colorscheme palernight
 
 
@@ -52,11 +51,10 @@ map global normal <c-s> ': fzf-mode<ret>b' -docstring "fzf switch buffer"
 map global normal <c-l> ': enter-user-mode lsp<ret>' -docstring "enter lsp mode"
 
 # -------------------------------------- commands --------------------------------------
-define-command d "buffer *debug*"
-define-command D "buffer *debug*"
-define-command lower "exec `"
-define-command upper "exec ~"
-define-command W "write"
+define-command where 'echo %val{buffile}'
+define-command lower 'exec `'
+define-command upper 'exec ~'
+define-command W 'write'
 
 
 # --------------------------------------- hooks ---------------------------------------
@@ -114,10 +112,6 @@ hook global WinSetOption filetype=latex %{
   map global normal $ i$<esc>a$<esc>
 
   set-option window formatcmd %{latexindent --yaml="defaultIndent: '  '"}
-}
-
-hook global WinSetOption filetype=man %{
-  remove-highlighter global/col-89
 }
 
 hook global BufCreate .*(sway)/config.d/[^\.]* %{
