@@ -5,7 +5,7 @@
   font: "{{FONT}} {{ROFI_FONT_SIZE}}";
 }
 
-#window {
+window {
   height: 100%;
   width: 100%;
   x-offset: 0px;
@@ -14,12 +14,16 @@
   background-color: #252525dd;
 }
 
-#prompt {
+prompt {
   color: #ffffff;
   foreground-color: #ff0000;
 }
 
-#element.selected.normal {
+element {
+    padding: 0px 10px;
+}
+
+element.selected.normal {
   border: 0px 0px 0px 1px;
   border-color: #ffffffbb;
 }
