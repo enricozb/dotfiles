@@ -11,11 +11,16 @@
   x-offset: 0px;
   y-offset: {{BAR_HEIGHT}} px;
   padding: 400px 600px;
-  background-color: #252525bb;
+  background-color: #252525dd;
 }
 
 #prompt {
   color: #ffffff;
   foreground-color: #ff0000;
-  // background-color: #00ff00;
 }
+
+#element.selected.normal {
+  border: 0px 0px 0px 1px;
+  border-color: #ffffffbb;
+}
+
