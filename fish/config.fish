@@ -42,6 +42,18 @@ alias xdg-open open
 
 
 # ----------------------- functions ----------------------
+function brave -w brave --description "open browser with specified profile"
+  switch $argv
+    case loretto
+      command brave --profile-directory="Profile 1"
+    case zoken
+      command brave --profile-directory="Profile 2"
+    case '*'
+      command brave --profile-directory="Default"
+  end
+end
+
+
 function work --description "default tmux session"
   tmux -2 new-session -A -s work
 end
