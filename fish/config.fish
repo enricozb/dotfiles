@@ -46,7 +46,7 @@ function brave -w brave --description "open browser with specified profile"
   switch $argv
     case loretto
       command brave --profile-directory="Profile 1"
-    case zoken
+    case personal zoken
       command brave --profile-directory="Profile 2"
     case '*'
       command brave --profile-directory="Default"
