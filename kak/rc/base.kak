@@ -11,7 +11,8 @@ set-option global indentwidth 2
 
 
 # --------------------------------------- style ----------------------------------------
-add-highlighter global/numbers number-lines
+add-highlighter global/ number-lines
+add-highlighter global/ show-whitespaces
 add-highlighter global/trailing-whitespace regex ([^\S\n]+)\n 1:red,bright-red
 add-highlighter global/todo-fixme regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+r
 colorscheme palernight
@@ -97,7 +98,6 @@ hook global WinSetOption filetype=python %{
   set-option window tabstop 4
   set-option window indentwidth 4
   set-option window formatcmd "isort - | black -"
-  add-highlighter global/ show-whitespaces
 }
 
 hook global WinSetOption filetype=typescript %{

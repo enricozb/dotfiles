@@ -165,7 +165,7 @@ function open
   switch (file -L -b --mime-type $argv[1])
     case 'application/pdf'
       zathura $argv & disown
-    case 'text/*' 'inode/x-empty' 'application/octet-stream' 'application/json'
+    case 'text/*' 'inode/x-empty' 'application/octet-stream' 'application/json' 'application/csv'
       kak $argv
     case 'video/*'
       mpv $argv
