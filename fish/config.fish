@@ -6,6 +6,7 @@ set -x EDITOR kak
 set -x GIT_EDITOR kak
 set -x TEXMFHOME "$HOME/.texmf"         # latex
 set -x XDG_CONFIG_HOME "$HOME/.config"
+set -x FZF_OPEN_COMMAND "fd"
 set -x FZF_DEFAULT_OPTS \
   "--color=16 --reverse \
    --preview 'bat --style=numbers --color=always --line-range :500 {}' \
@@ -68,10 +69,10 @@ end
 
 
 function wiki_find --description "find wiki filename with fzf"
-  echo ~/wiki/(find -L ~/wiki \
-               ! -path "*/node_modules/*" \
-               ! -path "*/_target/*" \
-               -regex ".*\.\(md\|yuml\)" -printf "%P\n" | fzf)
+  fd ".*\.(md|yuml)" ~/wiki \
+    --exclude "*/node_modules/*" \
+    --exclude "*/_target/*" \
+    --no-ignore-vcs --follow | fzf
 end
 
 

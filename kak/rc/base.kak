@@ -22,7 +22,7 @@ colorscheme palernight
 # convenience
 map -docstring 'case insensitive exact search' global normal / /(?i)\Q
 map -docstring 'search' global normal ? /
-map global normal <backspace> ': q<ret>'
+map global normal <backspace> ': delete-buffer-or-quit<ret>'
 map global normal <c-_> ': comment-line<ret>' # <c-/> or <c-_>, the unit separator
 map global normal D <a-x>d
 map global normal = ': format<ret>'
@@ -56,6 +56,45 @@ define-command where 'echo %val{buffile}'
 define-command lower 'exec `'
 define-command upper 'exec ~'
 define-command W 'write'
+
+define-command delete-buffer-or-quit -docstring "delete the current buffer, quiting if no non-scratch/debug buffers remain" %{
+  try %{ write -sync }
+
+  echo -debug "dbq (before): buffile = %val{buffile}"
+  echo -debug "dbq (before): buflist = %val{buflist}"
+
+  try %{
+    execute-keys %sh{
+      if [ "$kak_buffile" != *debug* ]; then
+        printf ": delete-buffer<ret>"
+      else
+        printf "ga"
+      fi
+    }
+  } catch %{
+    # if here is no last buffer (with `ga`), then just do buffer-next
+    buffer-next
+  }
+
+  echo -debug "dbq (after): buffile = %val{buffile}"
+  echo -debug "dbq (after): buflist = %val{buflist}"
+
+  # quit if only debug & scratch buffers remain
+  evaluate-commands %sh{
+    eval "set -- $kak_quoted_buflist"
+    quit=true
+    for buf; do
+      if [ "$buf" != '*scratch*' ] && [ "$buf" != '*debug*' ]; then
+        printf "%s\n" "echo -debug 'dbq (found buffer): ''$buf'''"
+        quit=false
+      fi
+    done
+
+    if $quit; then
+      printf "%s\n" "quit"
+    fi
+  }
+}
 
 
 # --------------------------------------- hooks ---------------------------------------
