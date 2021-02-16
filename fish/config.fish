@@ -6,7 +6,7 @@ set -x EDITOR kak
 set -x GIT_EDITOR kak
 set -x TEXMFHOME "$HOME/.texmf"         # latex
 set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x FZF_OPEN_COMMAND "fd"
+set -x FZF_OPEN_COMMAND "fd --no-ignore"
 set -x FZF_DEFAULT_OPTS \
   "--color=16 --reverse \
    --preview 'bat --style=numbers --color=always --line-range :500 {}' \
