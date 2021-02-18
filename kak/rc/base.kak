@@ -27,6 +27,10 @@ map global normal <c-_> ': comment-line<ret>' # <c-/> or <c-_>, the unit separat
 map global normal D <a-x>d
 map global normal = ': format<ret>'
 
+# casing
+map global normal ^ ': upper<ret>'
+map global normal _ ': lower<ret>'
+
 # jump
 map global normal <c-o> <c-o>vv
 map global normal <c-i> <c-i>vv
