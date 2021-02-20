@@ -54,6 +54,7 @@ map global normal <c-s> ': fzf-mode<ret>b' -docstring "fzf switch buffer"
 
 # lsp
 map global normal <c-l> ': enter-user-mode lsp<ret>' -docstring "enter lsp mode"
+map global lsp R        ': lsp-rename-prompt<ret>' -docstring "rename identifier"
 
 # -------------------------------------- commands --------------------------------------
 define-command where 'echo %val{buffile}'
