@@ -126,7 +126,7 @@ hook global WinSetOption filetype=c %{
 }
 
 hook global WinSetOption filetype=go %{
-  set-option window formatcmd "goimports -local $(go mod edit -print | head -n 1 | awk '{print $2}')"
+  set-option window formatcmd "gofmt"
 
   hook -group golang-format-on-write window BufWritePre .* %{
     format
