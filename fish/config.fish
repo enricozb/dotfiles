@@ -69,7 +69,8 @@ end
 
 
 function wiki_find --description "find wiki filename with fzf"
-  fd ".*\.(md|yuml)" ~/wiki \
+  fd ".*\.(md|yuml)" \
+    --base-directory ~/wiki \
     --exclude "*/node_modules/*" \
     --exclude "*/_target/*" \
     --no-ignore-vcs --follow | fzf
@@ -114,10 +115,10 @@ end
 
 
 function project_find --description "find a project dir with fzf"
-  echo ~/wiki/activities/projects/(find ~/wiki/activities/projects \
-      -type d \
-      -not -path '*/\.*' \
-      -printf "%P\n" \
+  echo ~/wiki/activities/projects/(fd . \
+      --base-directory ~/wiki/activities/projects \
+      --type d \
+      --follow \
     | fzf)
 end
 
