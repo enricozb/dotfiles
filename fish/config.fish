@@ -78,7 +78,7 @@ end
 
 
 function wiki_open --description "find wiki filename with fzf"
-  set -l file (wiki_find)
+  set -l file ~/wiki/(wiki_find)
   if [ -n "$file" ]
     command kak $file
   end
