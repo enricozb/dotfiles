@@ -33,7 +33,7 @@ set -x PATH $PATH "/usr/bin/vendor_perl/"   # exiftool
 alias o "open"
 alias l "ls"
 alias cp "cp -p"
-alias wiki "kak ~/wiki/_.md"
+alias wiki "kak ~/wiki/index.md"
 alias wg "wikigrep"
 alias gg "lazygit"
 alias tree "tree -C"
@@ -87,7 +87,7 @@ end
 function wiki_open --description "find wiki filename with fzf"
   set -l file ~/wiki/(wiki_find)
   if [ -n "$file" ]
-    kak $file
+    command kak $file
   end
   commandline -f repaint
 end
@@ -248,10 +248,11 @@ if [ -f "$HOME/.config/fish/config.local.fish" ]
 end
 
 # ephemeral configuration for tmux sessions that wrap kakoune clients
-echo "
-  set -g escape-time 0
-  set -g default-terminal 'tmux-256color'
-  set -g terminal-overrides ',*col*:Tc'
-  set -g status off
-  set -g set-clipboard on
-" >> /tmp/kak.tmux.conf
+if [ ! -f /tmp/kak.tmux.conf ]
+  echo "
+    set -g escape-time 0
+    set -g default-terminal 'tmux-256color'
+    set -g terminal-overrides ',*col*:Tc'
+    set -g status off
+  " > /tmp/kak.tmux.conf
+end
