@@ -33,7 +33,7 @@ set -x PATH $PATH "/usr/bin/vendor_perl/"   # exiftool
 alias o "open"
 alias l "ls"
 alias cp "cp -p"
-alias wiki "kak ~/wiki/index.md"
+alias wiki "kak ~/wiki/_.md"
 alias wg "wikigrep"
 alias gg "lazygit"
 alias tree "tree -C"
