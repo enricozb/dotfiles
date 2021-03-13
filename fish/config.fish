@@ -33,7 +33,7 @@ set -x PATH $PATH "/usr/bin/vendor_perl/"   # exiftool
 alias o "open"
 alias l "ls"
 alias cp "cp -p"
-alias wiki "kak ~/wiki/_.md"
+alias wiki "kak ~/wiki/index.md"
 alias wg "wikigrep"
 alias gg "lazygit"
 alias tree "tree -C"
@@ -251,8 +251,7 @@ end
 if [ ! -f /tmp/kak.tmux.conf ]
   echo "
     set -g escape-time 0
-    set -g default-terminal 'tmux-256color'
-    set -g terminal-overrides ',*col*:Tc'
+    set -g terminal-overrides ',*:Tc'
     set -g status off
   " > /tmp/kak.tmux.conf
 end
