@@ -253,4 +253,5 @@ echo "
   set -g default-terminal 'tmux-256color'
   set -g terminal-overrides ',*col*:Tc'
   set -g status off
+  set -g set-clipboard on
 " >> /tmp/kak.tmux.conf
