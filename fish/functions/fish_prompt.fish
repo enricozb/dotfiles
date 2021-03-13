@@ -10,8 +10,12 @@ function fish_prompt
   set_color green
   echo -n "@"
 
-  set_color cyan
-  echo -n (hostname)
+  if [ $hostname = carbon ]
+    set_color yellow
+  else
+    set_color cyan
+  end
+  echo -n "$hostname"
 
   set_color white
   echo -n " "
