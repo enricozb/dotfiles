@@ -127,6 +127,9 @@ bindsym F7 exec --no-startup-id "playerctl play-pause && killall -SIGUSR1 status
 # compositor
   exec --no-startup-id "picom -b --config /home/enricozb/.config/picom/config"
 
+# notifications
+  exec --no-startup-id dunst
+
 # gaps
   gaps outer 0
   gaps inner 10
