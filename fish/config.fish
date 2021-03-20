@@ -55,13 +55,6 @@ function brave -w brave --description "open browser with specified profile"
 end
 
 
-function kak -w kak --description "open kak within a tmux session"
-  set -l escaped_argv (string escape -- $argv)
-  command tmux -q -L kak -f /tmp/kak.tmux.conf \
-    new-session "/usr/bin/kak $escaped_argv" > /dev/null
-end
-
-
 function work --description "default tmux session"
   tmux -2 new-session -A -s work
 end
@@ -250,7 +243,9 @@ end
 # ephemeral configuration for tmux sessions that wrap kakoune clients
 if [ ! -f /tmp/kak.tmux.conf ]
   echo "
+    set -g mouse on
     set -g escape-time 0
+    set -g default-terminal 'tmux-256color'
     set -g terminal-overrides ',*:Tc'
     set -g status off
   " > /tmp/kak.tmux.conf
