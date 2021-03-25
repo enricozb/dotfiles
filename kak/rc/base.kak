@@ -183,6 +183,7 @@ hook global WinSetOption filetype=rust %{
 # ----------------------------------- plugin options -----------------------------------
 # fzf
 require-module fzf
+require-module fzf-file
 set-option global fzf_use_main_selection false
 set-option global fzf_highlight_command bat
 set-option global fzf_file_command \
