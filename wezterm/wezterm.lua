@@ -1,11 +1,16 @@
 local wezterm = require 'wezterm';
 
 return {
+  enable_scroll_bar = true,
+
   font_dirs = {"/usr/share/fonts"},
   font = wezterm.font("Terminus (TTF)"),
   font_size = 12.0,
 
   colors = {
+    cursor_bg = "#CCCCCC",
+    cursor_border = "#CCCCCC",
+
     background = '#0A0E14',
     foreground = '#B3B1AD',
 
