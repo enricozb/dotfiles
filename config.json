@@ -1,24 +1,25 @@
 {
   "dest": {
+    "fish/functions/fish_prompt.fish": "/home/enricozb/.config/fish/functions/fish_prompt.fish",
+    "i3/config.template": "/home/enricozb/.config/i3/config.template",
+    "bash/.bash_profile": "/home/enricozb/.bash_profile",
+    "kak/colors/palernight.kak": "/home/enricozb/.config/kak/colors/palernight.kak",
+    "wezterm/wezterm.lua": "/home/enricozb/.config/wezterm/wezterm.lua",
+    "mpv": "/home/enricozb/.config/mpv",
     "i3/kbd-light.sh": "/home/enricozb/.config/i3/kbd-light.sh",
+    "kak/kakrc": "/home/enricozb/.config/kak/kakrc",
+    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
+    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
+    "wallpapers": "/home/enricozb/.config/wallpapers",
     "kak-lsp/kak-lsp.toml": "/home/enricozb/.config/kak-lsp/kak-lsp.toml",
     "tmux/.tmux.conf": "/home/enricozb/.tmux.conf",
-    "wallpapers": "/home/enricozb/.config/wallpapers",
-    "i3/config.template": "/home/enricozb/.config/i3/config.template",
-    "fish/functions/fish_prompt.fish": "/home/enricozb/.config/fish/functions/fish_prompt.fish",
+    "flameshot/flameshot.ini": "/home/enricozb/.config/flameshot/flameshot.ini",
+    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml.template",
+    "kak/rc": "/home/enricozb/.config/kak/rc",
+    "picom/config": "/home/enricozb/.config/picom/config",
     "sway": "/home/enricozb/.config/sway",
     "xinit/.xinitrc": "/home/enricozb/.xinitrc",
-    "kak/kakrc": "/home/enricozb/.config/kak/kakrc",
-    "flameshot/flameshot.ini": "/home/enricozb/.config/flameshot/flameshot.ini",
-    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi.template",
-    "bash/.bash_profile": "/home/enricozb/.bash_profile",
-    "fish/config.fish": "/home/enricozb/.config/fish/config.fish",
-    "kak/colors/palernight.kak": "/home/enricozb/.config/kak/colors/palernight.kak",
-    "kak/rc": "/home/enricozb/.config/kak/rc",
-    "mpv": "/home/enricozb/.config/mpv",
-    "i3/lock.sh": "/home/enricozb/.config/i3/lock.sh",
-    "picom/config": "/home/enricozb/.config/picom/config",
-    "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml.template"
+    "i3/lock.sh": "/home/enricozb/.config/i3/lock.sh"
   },
   "overrides": {
     "enricozb@crux": {
@@ -26,10 +27,10 @@
       "templates": {},
       "vars": {
         "FOCUS_FOLLOWS_MOUSE": "false",
-        "ROFI_FONT_SIZE": "20",
-        "TERMINAL_FONT_SIZE": "10.0",
+        "FONT": "Terminus (TTF)",
         "BAR_HEIGHT": "33",
-        "FONT": "Terminus (TTF)"
+        "ROFI_FONT_SIZE": "20",
+        "TERMINAL_FONT_SIZE": "10.0"
       }
     },
     "enricozb@carbon": {
@@ -37,9 +38,9 @@
       "templates": {},
       "vars": {
         "FONT": "Terminus (TTF)",
-        "BAR_HEIGHT": "33",
-        "FOCUS_FOLLOWS_MOUSE": "true",
         "ROFI_FONT_SIZE": "20",
+        "FOCUS_FOLLOWS_MOUSE": "true",
+        "BAR_HEIGHT": "33",
         "TERMINAL_FONT_SIZE": "12.0"
       }
     },
@@ -56,8 +57,8 @@
     }
   },
   "templates": {
-    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi",
     "alacritty/alacritty.yml.template": "/home/enricozb/.config/alacritty/alacritty.yml",
+    "rofi/config.rasi.template": "/home/enricozb/.config/rofi/config.rasi",
     "i3/config.template": "/home/enricozb/.config/i3/config"
   }
 }
