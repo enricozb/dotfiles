@@ -184,6 +184,7 @@ hook global WinSetOption filetype=rust %{
 # fzf
 require-module fzf
 require-module fzf-file
+set-option global fzf_terminal_command 'nop %sh{wezterm cli split-pane ''kak -c %val{session} -e "%arg{@}"''}'
 set-option global fzf_use_main_selection false
 set-option global fzf_highlight_command bat
 set-option global fzf_file_command \
