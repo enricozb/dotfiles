@@ -31,6 +31,8 @@ return {
   keys = {
     {key="|", mods="LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
     {key="-", mods="LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
+
+    {key="w", mods="CMD", action=wezterm.action{CloseCurrentPane={confirm=false}}},
     {key="v", mods="CTRL", action=wezterm.action{PasteFrom="Clipboard"}},
     {key="c", mods="CTRL", action=wezterm.action{CopyTo="Clipboard"}},
     {key="x", mods="CTRL", action=wezterm.action{SendString="\x03"}},

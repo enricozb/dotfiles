@@ -187,7 +187,7 @@ end
 
 function ezb -d "ssh into main ezb machine"
   set -x TERM xterm-256color
-  command ssh 10.0.0.67 -t fish
+  command ssh 192.168.2.147 -t fish
 end
 
 

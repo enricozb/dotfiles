@@ -14,6 +14,13 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 # plug "jjk96/kakoune-rainbow"
 # plug "caksoylar/kakoune-smooth-scroll"
 
+plug "gustavo-hms/luar"
+plug "andreyorst/fzf.kak"
+plug "robertmeta/plug.kak" noload
+plug "kak-lsp/kak-lsp" do %{
+  cargo install --locked --force --path .
+}
+
 plug "enricozb/tabs.kak" %{
   set-option global modelinefmt_tabs '%val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}}'
   set-option global tab_separator '│'
@@ -29,11 +36,6 @@ plug "enricozb/tabs.kak" %{
 }
 plug "enricozb/cursors.kak"
 plug "enricozb/wiki.kak"
-plug "kak-lsp/kak-lsp" do %{
-  cargo install --locked --force --path .
-}
-plug "andreyorst/fzf.kak"
-plug "robertmeta/plug.kak" noload
 
 # ------------------------------------- .kak files ------------------------------------- 
 evaluate-commands %sh{
