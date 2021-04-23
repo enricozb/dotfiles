@@ -103,11 +103,6 @@ define-command delete-buffer-or-quit -docstring "delete the current buffer, quit
 
 
 # --------------------------------------- hooks ---------------------------------------
-# wezterm support
-hook global ModuleLoaded x11 %{
-  set-option global termcmd 'wezterm cli split-pane -- sh -c'
-}
-
 # enable flag-lines hl for git diff
 hook global WinCreate .* %{
     add-highlighter window/git-diff flag-lines Default git_diff_flags
@@ -139,7 +134,7 @@ hook global WinSetOption filetype=go %{
 
   hook window -once -always WinSetOption filetype=.* %{
     unset-option window formatcmd
-      remove-hooks window golang-format-on-write
+    remove-hooks window golang-format-on-write
   }
 }
 
@@ -189,7 +184,7 @@ hook global WinSetOption filetype=rust %{
 # fzf
 require-module fzf
 require-module fzf-file
-
+set-option global fzf_terminal_command 'nop %sh{wezterm cli split-pane ''kak -c %val{session} -e "%arg{@}"''}'
 set-option global fzf_use_main_selection false
 set-option global fzf_highlight_command bat
 set-option global fzf_file_command \
