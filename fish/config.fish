@@ -131,7 +131,7 @@ end
 
 
 function fzf_open --description "open a file using the fzf prompt"
-  set -l path (fd | fzf $FZF_OPTS)
+  set -l path (fd --no-ignore-vcs | fzf $FZF_OPTS)
   if [ -f "$path" ]
     open "$path"
   else if [ -d "$path" ]
@@ -169,7 +169,8 @@ end
 function open
   switch (file -L -b --mime-type $argv[1])
     case 'application/pdf'
-      zathura $argv & disown
+      zathura $argv > /dev/null 2>&1 & disown
+      commandline -f exit
     case 'text/*' 'inode/x-empty' 'application/octet-stream' 'application/json' 'application/csv'
       kak $argv
     case 'video/*'

@@ -11,14 +11,11 @@ evaluate-commands %sh{
 
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
-# plug "jjk96/kakoune-rainbow"
-# plug "caksoylar/kakoune-smooth-scroll"
-
 plug "gustavo-hms/luar"
 plug "andreyorst/fzf.kak"
 plug "robertmeta/plug.kak" noload
 plug "ul/kak-lsp" do %{
-    cargo install --force --path .
+    cargo install --locked --force --path .
 }
 
 plug "enricozb/tabs.kak" %{
