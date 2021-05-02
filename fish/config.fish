@@ -6,13 +6,12 @@ set -x EDITOR kak
 set -x GIT_EDITOR kak
 set -x TEXMFHOME "$HOME/.texmf"         # latex
 set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x FZF_OPEN_COMMAND "fd --no-ignore"
-set -x FZF_DEFAULT_OPTS \
-  "--color=16 --reverse \
-   --preview 'bat --style=numbers --color=always --line-range :500 {}' \
-   --tiebreak=length,end \
-   --bind=tab:down,shift-tab:up"        # fzf
-set -U FZF_LEGACY_KEYBINDINGS 0
+set -x FZF_OPTS \
+  --color=16 \
+  --reverse \
+  --preview 'bat --style=numbers --color=always --line-range :500 {}' \
+  --tiebreak=length,end \
+  --bind=tab:down,shift-tab:up          # fzf
 set -x GOPATH "$HOME/.go"               # golang
 
 
@@ -34,7 +33,7 @@ alias o "open"
 alias l "ls"
 alias cp "cp -p"
 alias wiki "kak ~/wiki/_.md"
-alias wg "wikigrep"
+alias wg "wiki_grep"
 alias gg "lazygit"
 alias tree "tree -C"
 
@@ -55,25 +54,23 @@ function brave -w brave --description "open browser with specified profile"
 end
 
 
-function work --description "default tmux session"
-  tmux -2 new-session -A -s work
-end
-
-
-function wikigrep --description "grep wiki files for content"
-  command rg -i -t md -t yaml \
-    -g "!*/node_modules/*" \
-    -g "!*/_target/*" \
-    $argv ~/wiki
+function wiki_grep --description "grep wiki files for content"
+  command rg $argv ~/wiki \
+    --ignore-case \
+    --type md \
+    --glob '!*/node_modules/*' --glob '!*/_target/*' \
+    --follow
 end
 
 
 function wiki_find --description "find wiki filename with fzf"
-  fd ".*\.(md|yuml)" \
+  command fd \
     --base-directory ~/wiki \
-    --exclude "*/node_modules/*" \
-    --exclude "*/_target/*" \
-    --no-ignore-vcs --follow | fzf
+    --extension md \
+    --exclude 'node_modules/' --exclude '_target/' \
+    --no-ignore-vcs \
+    --follow \
+    | fzf
 end
 
 
@@ -87,8 +84,60 @@ end
 
 
 function wiki_insert --description "find wiki filename with fzf"
-  commandline -it -- (wiki_find)
+  commandline --insert --current-token -- (wiki_find)
+  commandline --insert --current-token -- " "
+end
+
+
+function project_find --description "find a project dir with fzf"
+  echo ~/wiki/activities/projects/(
+    command fd \
+      --type d \
+      --base-directory ~/wiki/activities/projects \
+      --exclude 'node_modules/' --exclude '_target/' \
+      --follow \
+      | fzf
+    )
+end
+
+
+function project_open --description "cd into a project with fzf"
+  set -l proj (project_find)
+
+  if [ -n "$proj" ]
+    cd $proj
+    commandline -f repaint
+    if test -e 'pyproject.toml'
+      # if a virtual env is set, deactivate before going into a new one
+      if set -q VIRTUAL_ENV
+        deactivate
+      end
+      echo -e '\n'(set_color yellow)'Found pyproject.toml'(set_color normal)
+      set -l venv_file (poetry env list --full-path | awk '{ print $1 }')/bin/activate.fish
+      if [ -f "$venv_file" ]
+        source "$venv_file"
+      else
+        echo -e (set_color red)'No virtualenv'(set_color normal)
+      end
+    end
+  end
+end
+
+
+function project_insert --description "insert a project dir into the commandline"
+  commandline -it -- (project_find)
   commandline -it -- " "
+end
+
+
+function fzf_open --description "open a file using the fzf prompt"
+  set -l path (fd | fzf $FZF_OPTS)
+  if [ -f "$path" ]
+    open "$path"
+  else if [ -d "$path" ]
+    cd "$path"
+  end
+  commandline -f repaint
 end
 
 
@@ -101,65 +150,19 @@ function config --description "access configs"
     case kak sway
       cd "$HOME/.config/$argv"
     case ""
-      set -l file ~/.config/(find -L ~/.config \
-                   ! -path "*/lazygit/*/*" \
-                   ! -path "*/BraveSoftware/*" \
-                   -printf '%P\n' | fzf)
+      set -l file ~/.config/(
+        command fd \
+          --base-directory ~/.config/ \
+          --exclude '*/BraveSoftware/*' \
+          --follow \
+          | fzf
+      )
       if [ -n "$file" ]
         open $file
       end
     case "*"
       echo "Unknown arg '$argv'"
   end
-end
-
-
-function project_find --description "find a project dir with fzf"
-  echo ~/wiki/activities/projects/(fd . \
-      --base-directory ~/wiki/activities/projects \
-      --type d \
-      --follow \
-    | fzf)
-end
-
-
-function project_open --description "cd into a project with fzf"
-  set -l proj (project_find)
-
-  if [ -n "$proj" ]
-    cd $proj
-    commandline -f repaint
-    if test -e "pyproject.toml"
-      # if a virtual env is set, deactivate before going into a new one
-      if set -q VIRTUAL_ENV
-        deactivate
-      end
-      echo -e "\n"(set_color yellow)"Found pyproject.toml"(set_color normal)
-      source (poetry env list --full-path | awk '{ print $1 }')/bin/activate.fish
-    end
-  end
-end
-
-
-function project_insert --description "insert a project dir into the commandline"
-  commandline -it -- (project_find)
-  commandline -it -- " "
-end
-
-
-# Originally defined in /usr/share/fish/functions/__fish_prepend_sudo.fish @ line 1
-# The modification here is so it has a toggling behavior on multiple presses.
-function __fish_prepend_sudo -d "Prepend 'sudo ' to the beginning of the current commandline"
-    set -l cmd (commandline -po)
-    set -l cursor (commandline -C)
-    if test "$cmd[1]" != sudo
-        commandline -C 0
-        commandline -i "sudo "
-        commandline -C (math $cursor + 5)
-    else
-        commandline -r (string sub --start=6 (commandline -p))
-        commandline -C -- (math $cursor - 5)
-    end
 end
 
 
@@ -180,8 +183,13 @@ function open
   end
 end
 
+
 function man -w man -d "man with kak as the pager"
-  kak -e "man $argv"
+  if [ -n "$argv" ]; and command man "$argv" > /dev/null 2>&1
+    command kak -e "man $argv"
+  else
+    command man $argv
+  end 
 end
 
 
@@ -222,13 +230,13 @@ bind \ep project_open
 bind \eP project_insert
 bind \ew wiki_open
 bind \eW wiki_insert
-bind \eo __fzf_open
-bind \eO __fzf_open_insert
+bind \eo fzf_open
+bind \eO fzf_insert
 
 bind \cw forward-word
 bind \cb backward-kill-word
 bind \cs __fish_prepend_sudo
-bind \eC config
+bind \ec config
 bind \> __bound_nextd
 bind \< __bound_prevd
 
@@ -238,15 +246,4 @@ source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null or true
 
 if [ -f "$HOME/.config/fish/config.local.fish" ]
   source "$HOME/.config/fish/config.local.fish"
-end
-
-# ephemeral configuration for tmux sessions that wrap kakoune clients
-if [ ! -f /tmp/kak.tmux.conf ]
-  echo "
-    set -g mouse on
-    set -g escape-time 0
-    set -g default-terminal 'tmux-256color'
-    set -g terminal-overrides ',*:Tc'
-    set -g status off
-  " > /tmp/kak.tmux.conf
 end
