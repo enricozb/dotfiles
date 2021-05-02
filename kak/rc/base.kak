@@ -65,9 +65,6 @@ define-command W 'write'
 define-command delete-buffer-or-quit -docstring "delete the current buffer, quiting if no non-scratch/debug buffers remain" %{
   try %{ write -sync }
 
-  echo -debug "dbq (before): buffile = %val{buffile}"
-  echo -debug "dbq (before): buflist = %val{buflist}"
-
   try %{
     execute-keys %sh{
       if [ "$kak_buffile" != *debug* ]; then
@@ -81,16 +78,12 @@ define-command delete-buffer-or-quit -docstring "delete the current buffer, quit
     buffer-next
   }
 
-  echo -debug "dbq (after): buffile = %val{buffile}"
-  echo -debug "dbq (after): buflist = %val{buflist}"
-
   # quit if only debug & scratch buffers remain
   evaluate-commands %sh{
     eval "set -- $kak_quoted_buflist"
     quit=true
     for buf; do
       if [ "$buf" != '*scratch*' ] && [ "$buf" != '*debug*' ]; then
-        printf "%s\n" "echo -debug 'dbq (found buffer): ''$buf'''"
         quit=false
       fi
     done

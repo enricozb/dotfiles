@@ -17,8 +17,8 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "gustavo-hms/luar"
 plug "andreyorst/fzf.kak"
 plug "robertmeta/plug.kak" noload
-plug "kak-lsp/kak-lsp" do %{
-  cargo install --locked --force --path .
+plug "ul/kak-lsp" do %{
+    cargo install --force --path .
 }
 
 plug "enricozb/tabs.kak" %{
