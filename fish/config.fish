@@ -141,6 +141,12 @@ function fzf_open --description "open a file using the fzf prompt"
 end
 
 
+function fzf_insert --description "insert a path using fzf"
+  commandline --insert --current-token -- (fd --no-ignore-vcs | fzf $FZF_OPTS)
+  commandline --insert --current-token -- " "
+end
+
+
 function config --description "access configs"
   switch $argv
     case i3
