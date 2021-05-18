@@ -37,9 +37,6 @@ alias wg "wiki_grep"
 alias gg "lazygit"
 alias tree "tree -C"
 
-# force __fzf_open to use my `open`
-alias xdg-open open
-
 
 # ----------------------- functions ----------------------
 function brave -w brave --description "open browser with specified profile"
@@ -51,6 +48,37 @@ function brave -w brave --description "open browser with specified profile"
     case '*'
       command brave --profile-directory="Default"
   end
+end
+
+
+function config --description "access configs"
+  switch $argv
+    case i3
+      open "$HOME/.config/i3/config"
+    case fish
+      open "$HOME/.config/fish/config.fish"
+    case kak sway
+      cd "$HOME/.config/$argv"
+    case ""
+      set -l file ~/.config/(
+        command fd \
+          --base-directory ~/.config/ \
+          --exclude '*/BraveSoftware/*' \
+          --follow \
+          | fzf
+      )
+      if [ -n "$file" ]
+        open $file
+      end
+    case "*"
+      echo "Unknown arg '$argv'"
+  end
+end
+
+
+function cmd --description "run a command and add it to the history"
+  commandline --replace "$argv"
+  commandline --function execute
 end
 
 
@@ -77,15 +105,16 @@ end
 function wiki_open --description "find wiki filename with fzf"
   set -l file ~/wiki/(wiki_find)
   if [ -n "$file" ]
-    command kak $file
+    cmd "kak '$file'"
   end
-  commandline -f repaint
 end
 
 
 function wiki_insert --description "find wiki filename with fzf"
-  commandline --insert --current-token -- (wiki_find)
-  commandline --insert --current-token -- " "
+  set -l wiki_file (wiki_find)
+  if [ -n "$wiki_file" ]
+    commandline --insert --current-token -- "$wiki_file "
+  end
 end
 
 
@@ -105,8 +134,8 @@ function project_open --description "cd into a project with fzf"
   set -l proj (project_find)
 
   if [ -n "$proj" ]
-    cd $proj
-    commandline -f repaint
+    cmd "cd '$proj'"
+    commandline --function repaint
     if test -e 'pyproject.toml'
       # if a virtual env is set, deactivate before going into a new one
       if set -q VIRTUAL_ENV
@@ -125,49 +154,33 @@ end
 
 
 function project_insert --description "insert a project dir into the commandline"
-  commandline -it -- (project_find)
-  commandline -it -- " "
+  set -l project (project_find)
+  if [ -n "$project" ]
+    commandline --insert --current-token -- "$project "
+  end
+end
+
+
+function fzf_find --description "find a file using fzf"
+  echo (fd --no-ignore-vcs | fzf $FZF_OPTS)
 end
 
 
 function fzf_open --description "open a file using the fzf prompt"
-  set -l path (fd --no-ignore-vcs | fzf $FZF_OPTS)
+  set -l path (fzf_find)
   if [ -f "$path" ]
-    open "$path"
+    cmd "open '$path'"
   else if [ -d "$path" ]
-    cd "$path"
+    cmd "cd '$path'"
   end
-  commandline -f repaint
+  commandline --function repaint
 end
 
 
-function fzf_insert --description "insert a path using fzf"
-  commandline --insert --current-token -- (fd --no-ignore-vcs | fzf $FZF_OPTS)
-  commandline --insert --current-token -- " "
-end
-
-
-function config --description "access configs"
-  switch $argv
-    case i3
-      open "$HOME/.config/i3/config"
-    case fish
-      open "$HOME/.config/fish/config.fish"
-    case kak sway
-      cd "$HOME/.config/$argv"
-    case ""
-      set -l file ~/.config/(
-        command fd \
-          --base-directory ~/.config/ \
-          --exclude '*/BraveSoftware/*' \
-          --follow \
-          | fzf
-      )
-      if [ -n "$file" ]
-        open $file
-      end
-    case "*"
-      echo "Unknown arg '$argv'"
+function fzf_insert --description "insert an fzf file into the commandline"
+  set -l path (fzf_find)
+  if [ -n "$path" ]
+    commandline --insert --current-token -- "$path "
   end
 end
 
@@ -202,7 +215,7 @@ end
 
 function ezb -d "ssh into main ezb machine"
   set -x TERM xterm-256color
-  command ssh 192.168.2.147 -t fish
+  command ssh me.ezb.io -p 1749 -t fish
 end
 
 
@@ -215,19 +228,19 @@ end
 
 function __bound_nextd -w nextd -d "nextd with > binding"
   if [ -n (commandline) ]
-    commandline -i ">"
+    commandline --insert ">"
   else
     nextd
-    commandline -f repaint
+    commandline --function repaint
   end
 end
 
 function __bound_prevd -w prevd -d "prevd with < binding"
   if [ -n (commandline) ]
-    commandline -i "<"
+    commandline --insert "<"
   else
     prevd
-    commandline -f repaint
+    commandline --function repaint
   end
 end
 
