@@ -29,14 +29,13 @@ set -x PATH $PATH "/usr/bin/vendor_perl/"   # exiftool
 
 
 # ------------------------ aliases -----------------------
-alias clear "tput clear"
-alias cp    "cp -p"
-alias gg    "lazygit"
-alias l     "ls"
-alias o     "open"
-alias tree  "tree -C"
-alias wg    "wiki_grep"
-alias wiki  "kak ~/wiki/_.md"
+alias o "open"
+alias l "ls"
+alias cp "cp -p"
+alias wiki "kak ~/wiki/_.md"
+alias wg "wiki_grep"
+alias gg "lazygit"
+alias tree "tree -C"
 
 
 # ----------------------- functions ----------------------
