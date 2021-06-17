@@ -1,9 +1,9 @@
 # -------------------------------------- options --------------------------------------
 set-option global autoreload true
 set-option global scrolloff 3,0
-set-option global ui_options ncurses_enable_mouse=false
-set-option global ui_options ncurses_assistant=none
-set-option global ui_options ncurses_status_on_top=yes
+set-option -add global ui_options ncurses_enable_mouse=false
+set-option -add global ui_options ncurses_assistant=none
+set-option -add global ui_options ncurses_status_on_top=yes
 
 hook global InsertChar \t %{ exec -draft -itersel h@ }
 set-option global tabstop 2
@@ -134,12 +134,17 @@ hook global WinSetOption filetype=go %{
 hook global WinSetOption filetype=python %{
   set-option window tabstop 4
   set-option window indentwidth 4
-  set-option window formatcmd "isort - | black -"
+  set-option window formatcmd "isort - | yapf"
 }
 
 hook global WinSetOption filetype=typescript %{
   set-option window formatcmd \
     "npx prettier --stdin-filepath=${kak_buffile} --parser typescript"
+}
+
+hook global WinSetOption filetype=svelte %{
+  set-option window formatcmd \
+    "npx prettier --stdin-filepath=${kak_buffile} --parser svelte"
 }
 
 hook global WinSetOption filetype=latex %{
@@ -185,7 +190,7 @@ set-option global fzf_default_opts "%sh{echo ""$FZF_DEFAULT_OPTS""}"
 
 # lsp
 set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
-hook global WinSetOption filetype=(rust|go|javascript|typescript|python) %{
+hook global WinSetOption filetype=(rust|go|javascript|typescript|python|svelte) %{
   lsp-enable-window
 }
 

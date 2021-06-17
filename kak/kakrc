@@ -33,6 +33,7 @@ plug "enricozb/tabs.kak" %{
 }
 plug "enricozb/cursors.kak"
 plug "enricozb/wiki.kak"
+plug "enricozb/zen.kak"
 
 # ------------------------------------- .kak files ------------------------------------- 
 evaluate-commands %sh{
