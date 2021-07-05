@@ -142,6 +142,10 @@ hook global WinSetOption filetype=typescript %{
     "npx prettier --stdin-filepath=${kak_buffile} --parser typescript"
 }
 
+hook global WinSetOption filetype=swift %{
+  set-option window formatcmd "swiftformat --config %val{config}/.swiftformat"
+}
+
 hook global WinSetOption filetype=svelte %{
   set-option window formatcmd \
     "npx prettier --stdin-filepath=${kak_buffile} --parser svelte"
@@ -162,6 +166,10 @@ hook global BufCreate .*(sway)/config.d/[^\.]* %{
 
 hook global BufCreate .*i3/config.template %{
   set buffer filetype i3
+}
+
+hook global BufCreate .*\.(xm|x) %{
+  set buffer filetype objc
 }
 
 hook global WinSetOption filetype=rust %{

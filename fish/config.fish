@@ -1,6 +1,7 @@
 # ---------------------- environment ---------------------
 set fish_greeting                       # no greeting
 set SHELL /usr/bin/fish
+set -x XDG_DESKTOP_DIR "$HOME/.config/desktop"
 set -x VISUAL kak                       # editors
 set -x EDITOR kak
 set -x GIT_EDITOR kak
@@ -13,6 +14,7 @@ set -x FZF_OPTS \
   --tiebreak=length,end \
   --bind=tab:down,shift-tab:up          # fzf
 set -x GOPATH "$HOME/.go"               # golang
+set -x THEOS  "$HOME/.theos"            # theos
 
 
 # ------------------------- path -------------------------
@@ -73,6 +75,18 @@ function config --description "access configs"
     case "*"
       echo "Unknown arg '$argv'"
   end
+end
+
+
+function note -d "quick note"
+  set -l tmpfile (mktemp /tmp/note.XXXXXX)
+  echo "note in $tmpfile"
+  kak $tmpfile
+end
+
+
+function ssh -w ssh -d "ssh setting xterm-256colo"
+  TERM=xterm-256color command ssh $argv
 end
 
 
