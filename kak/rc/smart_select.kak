@@ -38,6 +38,4 @@ define-command smart-select %{ eval %sh{
   echo "exec z"
 }}
 
-map global normal <c-w> ': smart-select<ret>'
-
-
+# map global normal <c-w> ': smart-select<ret>'
