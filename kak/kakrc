@@ -31,6 +31,7 @@ plug "enricozb/tabs.kak" %{
   map global normal b ': enter-user-mode tabs<ret>' -docstring 'tabs'
   map global normal B ': enter-user-mode -lock tabs<ret>' -docstring 'tabs (lock)'
 }
+
 plug "enricozb/cursors.kak"
 plug "enricozb/wiki.kak"
 plug "enricozb/zen.kak"
