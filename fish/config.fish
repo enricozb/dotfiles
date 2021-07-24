@@ -235,6 +235,7 @@ end
 
 function mpv -w mpv -d "mpv with mpris"
   command mpv \
+    --framedrop=no \
     --script=/home/enricozb/.config/mpv/scripts/mpris.so \
     --really-quiet $argv > /dev/null 2>&1 & disown
 end
