@@ -22,6 +22,7 @@ colorscheme palernight
 # convenience
 map -docstring 'case insensitive exact search' global normal / /(?i)\Q
 map -docstring 'search' global normal ? /
+map global normal <c-w> ': delete-buffer<ret>'
 map global normal <backspace> ': delete-buffer-or-quit<ret>'
 map global normal <c-_> ': comment-line<ret>' # <c-/> or <c-_>, the unit separator
 map global normal D <a-x>d
@@ -62,38 +63,21 @@ define-command lower 'exec `'
 define-command upper 'exec ~'
 define-command W 'write'
 
-define-command delete-buffer-or-quit -docstring "delete the current buffer, quiting if no non-scratch/debug buffers remain" %{
-  try %{ write -sync }
-
-  try %{
-    execute-keys %sh{
-      if [ "$kak_buffile" != *debug* ]; then
-        printf ": delete-buffer<ret>"
-      else
-        printf "ga"
-      fi
-    }
-  } catch %{
-    # if here is no last buffer (with `ga`), then just do buffer-next
-    buffer-next
-  }
-
-  # quit if only debug & scratch buffers remain
+define-command delete-buffer-or-quit %{
   evaluate-commands %sh{
-    eval "set -- $kak_quoted_buflist"
-    quit=true
-    for buf; do
-      if [ "$buf" != '*scratch*' ] && [ "$buf" != '*debug*' ]; then
-        quit=false
-      fi
-    done
+      eval "set -- $kak_quoted_buflist"
 
-    if $quit; then
-      printf "%s\n" "quit"
-    fi
+      for buf; do
+        # if there is a non-debug buffer other than the current buffer, just delete buffer
+        if [ "$buf" != "*debug*" ] && [ "$buf" != "$kak_bufname" ]; then
+          printf "delete-buffer\n";
+          exit;
+        fi
+      done
+
+      printf "quit\n";
   }
 }
-
 
 # --------------------------------------- hooks ---------------------------------------
 # enable flag-lines hl for git diff
