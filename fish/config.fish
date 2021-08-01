@@ -127,7 +127,7 @@ end
 function wiki_insert --description "find wiki filename with fzf"
   set -l wiki_file (wiki_find)
   if [ -n "$wiki_file" ]
-    commandline --insert --current-token -- "$wiki_file "
+    commandline --insert --current-token -- (string escape "$wiki_file")" "
   end
 end
 
@@ -170,7 +170,7 @@ end
 function project_insert --description "insert a project dir into the commandline"
   set -l project (project_find)
   if [ -n "$project" ]
-    commandline --insert --current-token -- "$project "
+    commandline --insert --current-token -- (string escape "$project")" "
   end
 end
 
@@ -194,7 +194,7 @@ end
 function fzf_insert --description "insert an fzf file into the commandline"
   set -l path (fzf_find)
   if [ -n "$path" ]
-    commandline --insert --current-token -- "$path "
+    commandline --insert --current-token -- (string escape "$path")" "
   end
 end
 
