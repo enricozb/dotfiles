@@ -2,6 +2,7 @@ if [ $(hostname) = "carbon" ]; then
   if [ $(cat /sys/class/drm/card0-HDMI-A-1/status) = "connected" ]; then
     xft_dpi=""
     rofi_dpi="rofi.dpi: 56"
+    xrandr --output eDP-1 --off
   else
     xft_dpi="Xft.dpi: 144"
     rofi_dpi="rofi.dpi: 92"
