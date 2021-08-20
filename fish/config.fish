@@ -179,6 +179,12 @@ function fzf_find --description "find a file using fzf"
   echo (fd --no-ignore-vcs | fzf $FZF_OPTS)
 end
 
+function fzf_history --description "use fzf to find a command in the history"
+  history merge
+  history -z | fzf --read0 --print0 --preview '' -q (commandline) | read -lz result
+  and commandline -- $result
+  commandline -f repaint
+end
 
 function fzf_open --description "open a file using the fzf prompt"
   set -l path (fzf_find)
@@ -267,6 +273,7 @@ bind \ew wiki_open
 bind \eW wiki_insert
 bind \eo fzf_open
 bind \eO fzf_insert
+bind \cr fzf_history
 
 bind \cw forward-word
 bind \cb backward-kill-word

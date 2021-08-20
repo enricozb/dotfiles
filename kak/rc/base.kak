@@ -67,10 +67,15 @@ define-command delete-buffer-or-quit %{
   evaluate-commands %sh{
       eval "set -- $kak_quoted_buflist"
 
+      if [ "$kak_bufname" = '*debug*' ] ; then
+        printf 'buffer-previous\n';
+        exit;
+      fi
+
       for buf; do
         # if there is a non-debug buffer other than the current buffer, just delete buffer
-        if [ "$buf" != "*debug*" ] && [ "$buf" != "$kak_bufname" ]; then
-          printf "delete-buffer\n";
+        if [ "$buf" != '*debug*' ] && [ "$buf" != "$kak_bufname" ]; then
+          printf 'delete-buffer\n';
           exit;
         fi
       done
@@ -169,6 +174,10 @@ hook global WinSetOption filetype=rust %{
   }
 }
 
+hook global WinSetOption filetype=man %{
+  remove-highlighter global/show-whitespaces
+  map buffer normal <backspace> ': q<ret>'
+}
 
 # ----------------------------------- plugin options -----------------------------------
 # fzf
