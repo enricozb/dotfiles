@@ -224,6 +224,39 @@ function open
 end
 
 
+function kak -w kak -d "kak wrapped with backgrounding ipc"
+  # create temporary IPC directory, and files for:
+  #   - command to run
+  #   - output of command
+  #   - ready file (when present, control can be tranfered to kakoune)
+  set -l tmp (mktemp -d -p /tmp kak-ipc.XXXXXX)
+  set -l cmdfile $tmp/cmd
+  set -l outfile $tmp/out
+  set -l ready $tmp/ready
+  KAK_IPC_CMD=$cmdfile KAK_IPC_OUT=$outfile KAK_IPC_RDY=$ready command kak $argv
+
+  set -l kak_pid (jobs -l | awk '{ print $2 }')
+
+  while kill -0 $kak_pid 2>/dev/null
+    if test -f $cmdfile
+      set -l cmd (string split " " < $cmdfile)
+      
+      rm -f $cmdfile
+      rm -f $outfile
+      
+      command $cmd > $outfile
+      touch $ready
+    else
+      # if no $cmdfile exits, then kakoune was backgrounded on purpose, wait until it is foregrounded
+      echo 'kakoune cannot be backgrouned when started in ipc mode. foregrounding...'
+      sleep 3;
+    end
+    
+    fg 2>/dev/null
+  end
+end
+
+
 function man -w man -d "man with kak as the pager"
   if [ -n "$argv" ]; and command man "$argv" > /dev/null 2>&1
     command kak -e "man $argv"

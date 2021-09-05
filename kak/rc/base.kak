@@ -48,10 +48,7 @@ map global normal "'" "i'<esc>a'<esc>"
 map global normal ` i`<esc>a`<esc>
 
 # fzf
-map global normal <c-p> ': fzf-mode<ret>' -docstring "fzf-mode"
-map global normal <c-r> ': fzf-mode<ret>s' -docstring "fzf search"
-map global normal <a-o> ': fzf-mode<ret>f' -docstring "fzf open file"
-map global normal <c-s> ': fzf-mode<ret>b' -docstring "fzf switch buffer"
+map global normal <a-o> ': fzf-open<ret>' -docstring "fzf open file"
 
 # lsp
 map global normal <c-l> ': enter-user-mode lsp<ret>' -docstring "enter lsp mode"
@@ -81,6 +78,26 @@ define-command delete-buffer-or-quit %{
       done
 
       printf "quit\n";
+  }
+}
+
+define-command fzf-open %{
+  evaluate-commands %sh{
+    # prevent previous run from impacting this run
+    rm -f "$KAK_IPC_RDY"
+
+    # write command to run through IPC
+    printf "fzf\n" > "$KAK_IPC_CMD"
+
+    # pause kakoune, wait for READY signal
+    kill -s TSTP $kak_client_pid
+    while ! test -f "$KAK_IPC_RDY"; do sleep 0.01; done
+
+    # edit result of fzf command
+    file=$(cat $KAK_IPC_OUT)
+    if [ -f "$file" ]; then
+      printf "edit '$file'\n"
+    fi
   }
 }
 
