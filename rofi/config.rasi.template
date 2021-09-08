@@ -1,6 +1,6 @@
 * {
-  color: #ffffff;
-  backlight: #000000;
+  color: white;
+  backlight: transparent;
   background-color: transparent;
   font: "{{FONT}} {{ROFI_FONT_SIZE}}";
 }
@@ -9,22 +9,43 @@ window {
   height: 100%;
   width: 100%;
   x-offset: 0px;
-  y-offset: {{BAR_HEIGHT}} px;
+  y-offset: 22 px;
   padding: 400px 600px;
-  background-color: #252525dd;
+  background-color: #252525bb;
+  border: 0;
 }
 
-prompt {
-  color: #ffffff;
-  foreground-color: #ff0000;
+listview {
+  border: 0px 0px 0px 0px;
+  scrollbar: false;
+}
+
+prompt, inputbar {
+  color: white;
+}
+
+entry {
+  color: white;
 }
 
 element {
-    padding: 0px 10px;
+  padding: 0 0 0 5px;
 }
 
-element.selected.normal {
-  border: 0px 0px 0px 1px;
-  border-color: #ffffffbb;
+element alternate normal,
+element normal normal {
+  color: white;
+  background-color: transparent;
 }
 
+element selected normal {
+  color: white;
+  background-color: transparent;
+  border: 0 0 0 1px;
+  border-color: white;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+}
