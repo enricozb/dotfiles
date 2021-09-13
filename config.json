@@ -38,7 +38,7 @@
       "templates": {},
       "vars": {
         "FONT": "Terminus (TTF)",
-        "ROFI_FONT_SIZE": "20",
+        "ROFI_FONT_SIZE": "Medium 12",
         "FOCUS_FOLLOWS_MOUSE": "true",
         "BAR_HEIGHT": "33",
         "TERMINAL_FONT_SIZE": "12.0"
