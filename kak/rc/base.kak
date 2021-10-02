@@ -13,7 +13,7 @@ set-option global indentwidth 2
 # --------------------------------------- style ----------------------------------------
 add-highlighter global/ number-lines
 add-highlighter global/ show-whitespaces
-add-highlighter global/trailing-whitespace regex ([^\S\n]+)\n 1:red,bright-red
+add-highlighter global/trailing-whitespace regex '\h+$' 0:default,red+F
 add-highlighter global/todo-fixme regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+r
 colorscheme palernight
 
