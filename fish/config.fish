@@ -148,7 +148,7 @@ function project_open --description "cd into a project with fzf"
   set -l proj (project_find)
 
   if [ -n "$proj" ]
-    cmd "cd '$proj'"
+    cd "$proj"
     commandline --function repaint
     if test -e 'pyproject.toml'
       # if a virtual env is set, deactivate before going into a new one
@@ -166,7 +166,6 @@ function project_open --description "cd into a project with fzf"
   end
 end
 
-
 function project_insert --description "insert a project dir into the commandline"
   set -l project (project_find)
   if [ -n "$project" ]
@@ -183,7 +182,7 @@ function fzf_history --description "use fzf to find a command in the history"
   history merge
   history -z | fzf --read0 --print0 --preview '' -q (commandline) | read -lz result
   and commandline -- $result
-  commandline -f repaint
+  commandline --function repaint
 end
 
 function fzf_open --description "open a file using the fzf prompt"
